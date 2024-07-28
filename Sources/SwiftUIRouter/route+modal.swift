@@ -24,4 +24,15 @@ public extension View {
             )
             .environmentObject(router.wrappedValue)
     }
+
+    func route<R, T, ModalContent>(
+        using router: StateObject<Router<R, T>>,
+        appLink: String,
+        @ViewBuilder
+        modalContent: @escaping (R) -> ModalContent
+    ) -> some View
+    where R: RouteType, T: NavigationTarget, ModalContent: View
+    {
+        route(using: router, appLinks: [appLink], modalContent: modalContent)
+    }
 }
