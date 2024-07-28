@@ -5,7 +5,7 @@ import SwiftUI
 
 public extension View {
     func route<R, T, ModalContent>(
-        using router: StateObject<Router<R, T>>,
+        using router: Router<R, T>,
         appLinks: Set<String> = [],
         @ViewBuilder
         modalContent: @escaping (R) -> ModalContent
@@ -14,19 +14,19 @@ public extension View {
     {
         self
             .handlesExternalEvents(preferring: appLinks, allowing: appLinks)
-            .onOpenURL(perform: router.wrappedValue.onOpenUrl)
+            .onOpenURL(perform: router.onOpenUrl)
             .sheet(
                 item: Binding(
-                    get: { router.wrappedValue.modal },
-                    set: { router.wrappedValue.modal = $0 }
+                    get: { router.modal },
+                    set: { router.modal = $0 }
                 ),
                 content: modalContent
             )
-            .environmentObject(router.wrappedValue)
+            .environmentObject(router)
     }
 
     func route<R, T, ModalContent>(
-        using router: StateObject<Router<R, T>>,
+        using router: Router<R, T>,
         appLink: String,
         @ViewBuilder
         modalContent: @escaping (R) -> ModalContent

@@ -23,8 +23,8 @@ public class Router<R, T>: ObservableObject
             .assign(to: &$modal)
     }
 
-    public func present(_ route: R, target: T) {
-        let event = NavigationEvent(route: route, target: target)
+    public func present(_ route: R, target: T, withAnimation: Bool = false) {
+        let event = NavigationEvent(route: route, target: target, withAnimation: withAnimation)
         self._event.send(event)
     }
 

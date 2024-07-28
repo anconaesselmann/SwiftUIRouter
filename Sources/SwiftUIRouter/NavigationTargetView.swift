@@ -13,30 +13,26 @@ public struct NavigationTargetView<R, T, Content>: View
 
     private let target: T
 
-    public init(listenFor target: T, @ViewBuilder content: @escaping (R) -> Content) {
+    public init(_ startingRoute: R, listenFor target: T, @ViewBuilder content: @escaping (R) -> Content) {
+        self.route = startingRoute
         self.content = content
         self.target = target
     }
 
     @State
-    private var route: R?
+    private var route: R
 
     public var body: some View {
-        VStack {
-            if let route = route {
-                content(route)
-            }
-        }.onReceive(router.event
-            .filter { $0.target == target }
-        ) { event in
-            if event.withAnimation {
-                withAnimation {
-                    self.route = route
+        content(route)
+            .onReceive(router.event.filter { $0.target == target } ) { event in
+                if event.withAnimation {
+                    withAnimation {
+                        self.route = event.route
+                    }
+                } else {
+                    self.route = event.route
                 }
-            } else {
-                self.route = event.route
             }
-        }
     }
 }
 
