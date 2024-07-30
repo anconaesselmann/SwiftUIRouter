@@ -4,7 +4,7 @@
 import SwiftUI
 
 public extension View {
-    func presentModal<R, Content>(
+    func modal<R, Content>(
         for router: Router<R>,
         @ViewBuilder content: @escaping (R) -> Content
     ) -> some View

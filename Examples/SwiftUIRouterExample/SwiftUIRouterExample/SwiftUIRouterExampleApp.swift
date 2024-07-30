@@ -29,17 +29,17 @@ struct SwiftUIRouterExampleApp: App {
         WindowGroup {
             DeeplinkView(AppLink.self) {
                 NavigationTarget(RootRoute.test1, content: RootFactory.init)
-                    .presentModal(for: detailRouter) { route in
+                    .modal(for: detailRouter) { route in
                         Modal {
                             DetailFactory(route: route)
                         }
                     }
-                    .presentModal(for: contentRouter) { route in
+                    .modal(for: contentRouter) { route in
                         Modal {
                             ContentFactory(route: route)
                         }
                     }
-                    .presentModal(for: rootRouter) { route in
+                    .modal(for: rootRouter) { route in
                         Modal {
                             RootFactory(route: route)
                         }
