@@ -3,20 +3,17 @@
 
 import SwiftUI
 
-public struct NavigationTargetView<R, T, Content>: View
-    where R: RouteType, Content: View, T: NavigationTarget
+public struct NavigationTargetView<R, Content>: View
+    where R: RouteType, Content: View
 {
     @EnvironmentObject
-    private var router: Router<R, T>
+    private var router: Router<R>
 
     private var content: (R) -> Content
 
-    private let target: T
-
-    public init(_ startingRoute: R, listenFor target: T, @ViewBuilder content: @escaping (R) -> Content) {
+    public init(_ startingRoute: R, @ViewBuilder content: @escaping (R) -> Content) {
         self.route = startingRoute
         self.content = content
-        self.target = target
     }
 
     @State
@@ -24,7 +21,7 @@ public struct NavigationTargetView<R, T, Content>: View
 
     public var body: some View {
         content(route)
-            .onReceive(router.event.filter { $0.target == target } ) { event in
+            .onReceive(router.event) { event in
                 if event.withAnimation {
                     withAnimation {
                         self.route = event.route
@@ -35,4 +32,3 @@ public struct NavigationTargetView<R, T, Content>: View
             }
     }
 }
-

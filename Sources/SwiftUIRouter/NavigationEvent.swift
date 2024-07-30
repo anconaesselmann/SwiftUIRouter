@@ -3,16 +3,22 @@
 
 import Foundation
 
-public struct NavigationEvent<R, T>
-    where R: RouteType, T: NavigationTarget
+public enum NavigationStyle: String {
+    case none, modal, withAnimation
+}
+
+public struct NavigationEvent<R>
+    where R: RouteType
 {
     public let route: R
-    public let target: T
-    public let withAnimation: Bool
+    public let style: NavigationStyle
 
-    public init(route: R, target: T, withAnimation: Bool = false) {
+    public var withAnimation: Bool {
+        style == .withAnimation
+    }
+
+    public init(route: R, style: NavigationStyle) {
         self.route = route
-        self.target = target
-        self.withAnimation = withAnimation
+        self.style = style
     }
 }

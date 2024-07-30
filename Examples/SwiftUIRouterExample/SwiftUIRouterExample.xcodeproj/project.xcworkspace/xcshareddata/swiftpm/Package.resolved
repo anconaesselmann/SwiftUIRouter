@@ -1,0 +1,33 @@
+{
+  "originHash" : "36279c96c1222993a45ffad3ef8f2583d0a84ef5ffa2363249f87cbcff7328f8",
+  "pins" : [
+    {
+      "identity" : "loadableview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/anconaesselmann/LoadableView",
+      "state" : {
+        "revision" : "3413e0b17b87a670a64d448d64b55c2a0a5a5a89",
+        "version" : "0.3.12"
+      }
+    },
+    {
+      "identity" : "splash",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JohnSundell/Splash",
+      "state" : {
+        "revision" : "7f4df436eb78fe64fe2c32c58006e9949fa28ad8",
+        "version" : "0.16.0"
+      }
+    },
+    {
+      "identity" : "swiftuimarkdownview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/anconaesselmann/SwiftUIMarkdownView",
+      "state" : {
+        "revision" : "19d28a08471c3773193354a208122a109926c73e",
+        "version" : "0.1.3"
+      }
+    }
+  ],
+  "version" : 3
+}

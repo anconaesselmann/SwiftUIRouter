@@ -1,0 +1,21 @@
+{
+  "info": "This file is used to manage swift packages through the command line. For more info visit https://github.com/anconaesselmann/CLSPM",
+  "dependencies" : [
+    {
+      "id": "7511C78B-039E-430F-A0E2-62AE9BFCD44E",
+      "name": "SwiftUIRouter",
+      "local_path" : "../../",
+      "use_local" : true
+    }
+  ],
+  "targets" : [
+    {
+      "dependencies" : [
+        "SwiftUIRouter",
+        "SwiftUIMarkdownView"
+      ],
+      "id" : "9DFB16E0-CBB9-4FC6-9CE5-A1A8BD756004",
+      "name" : "SwiftUIRouterExample"
+    }
+  ]
+}

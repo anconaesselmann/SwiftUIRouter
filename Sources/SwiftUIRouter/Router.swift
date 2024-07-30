@@ -4,13 +4,15 @@
 import Foundation
 import Combine
 
-public class Router<R, T>: ObservableObject
-    where R: RouteType, T: NavigationTarget
+public class Router<R>: ObservableObject
+    where R: RouteType
 {
-    private var _event = CurrentValueSubject<NavigationEvent<R, T>?, Never>(nil)
+    private var _event = CurrentValueSubject<NavigationEvent<R>?, Never>(nil)
 
-    public var event: AnyPublisher<NavigationEvent<R, T>, Never> {
-        _event.compactMap { $0 }.eraseToAnyPublisher()
+    public var event: AnyPublisher<NavigationEvent<R>, Never> {
+        _event
+            .filter { !($0?.style == .modal) }
+            .compactMap { $0 }.eraseToAnyPublisher()
     }
 
     @Published
@@ -18,20 +20,25 @@ public class Router<R, T>: ObservableObject
 
     public init() { 
         _event
-            .filter { $0?.target.isModal ?? false }
+            .filter { $0?.style == .modal}
             .map { $0?.route }
             .assign(to: &$modal)
     }
 
-    public func present(_ route: R, target: T, withAnimation: Bool = false) {
-        let event = NavigationEvent(route: route, target: target, withAnimation: withAnimation)
+    public func present(_ route: R, style: NavigationStyle = .none) {
+        let event = NavigationEvent(route: route, style: style)
         self._event.send(event)
     }
 
-    public func onOpenUrl(_ url: URL) {
-        guard let event = NavigationEvent<R, T>(url) else {
-            return
+    public func present(anyRoute: any RouteType, style: NavigationStyle = .none) -> Bool {
+        guard let route = anyRoute as? R else {
+            return false
         }
-        _event.send(event)
+        self.present(route, style: style)
+        return true
+    }
+
+    public func asAnyRouter() -> AnyRouter {
+        AnyRouter(self)
     }
 }
