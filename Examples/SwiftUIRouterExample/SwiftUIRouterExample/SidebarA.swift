@@ -22,7 +22,7 @@ struct SidebarA: View {
                 router.present(.content.c)
             }
             Button("a_a") {
-                router.present(.content.a, .detail.a("aaa"), style: .modal)
+                router.present(.content.a, .detail.a("aaa"), style: .withAnimation)
             }
             Button("b_b") {
                 router.present(.content.b, .detail.b("bbb"), style: .withAnimation)
