@@ -9,6 +9,10 @@ typealias SidebarRouter = Router<SidebarRoute>
 typealias ContentRouter = Router<ContentRoute>
 typealias DetailRouter = Router<DetailRoute>
 
+enum AppLink: String {
+    case example
+}
+
 @main
 struct SwiftUIRouterExampleApp: App {
 
@@ -25,12 +29,17 @@ struct SwiftUIRouterExampleApp: App {
         WindowGroup {
             NavigationTargetView(RootRoute.test1, content: RootFactory.init)
                 .onDeeplink(
-                    with: "example",
+                    with: AppLink.example.rawValue,
                     use: rootRouter, sidebarRouter, contentRouter, detailRouter
                 )
                 .presentModal(for: detailRouter) { route in
                     Modal {
                         DetailFactory(route: route)
+                    }
+                }
+                .presentModal(for: contentRouter) { route in
+                    Modal {
+                        ContentFactory(route: route)
                     }
                 }
         }

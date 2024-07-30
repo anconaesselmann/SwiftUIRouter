@@ -6,6 +6,9 @@ import SwiftUI
 public extension View {
     func onDeeplink(with urlType: String, use routers: [AnyRouter]) -> some View {
         self
+            .environmentObject(AppRouter { url in
+                routers.route(url)
+            })
             .handlesExternalEvents(
                 preferring: [urlType],
                 allowing: [urlType]

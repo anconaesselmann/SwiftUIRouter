@@ -35,4 +35,26 @@ public extension URL {
         }
         return route
     }
+    
+    func withQueryParameter(key: String, value: String) -> URL? {
+        guard var components = URLComponents(string: self.absoluteString) else {
+            return nil
+        }
+        var query = components.queryItems ?? []
+        var found = false
+        for queryIndex in 0..<query.count {
+            var item = query[queryIndex]
+            if item.name == "style" {
+                item.value = value
+                query[queryIndex] = item
+                found = true
+                break
+            }
+        }
+        if !found {
+            query.append(URLQueryItem(name: "style", value: value))
+        }
+        components.queryItems = query
+        return components.url
+    }
 }

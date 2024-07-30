@@ -5,6 +5,17 @@ import Foundation
 
 public enum NavigationStyle: String {
     case none, modal, withAnimation
+
+    public var parameterName: String {
+        switch self {
+        case .none:
+            return "none"
+        case .modal:
+            return "modal"
+        case .withAnimation:
+            return "with_animation"
+        }
+    }
 }
 
 public extension NavigationStyle {

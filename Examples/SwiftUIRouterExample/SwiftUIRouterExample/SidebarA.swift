@@ -8,42 +8,31 @@ import SwiftUIMarkdownView
 struct SidebarA: View {
 
     @EnvironmentObject
-    var contentRouter: ContentRouter
-
-    @EnvironmentObject
-    var detailRouter: DetailRouter
-
-    @EnvironmentObject
-    var rootRouter: RootRouter
+    var router: AppRouter
 
     var body: some View {
         VStack {
             Button("a") {
-                contentRouter.present(.contentA)
+                router.present(.content.a)
             }
             Button("b") {
-                contentRouter.present(.contentB)
+                router.present(.content.b)
             }
             Button("c") {
-                contentRouter.present(.contentC)
+                router.present(.content.c)
             }
-
-
             Button("a_a") {
-                contentRouter.present(.contentA, style: .withAnimation)
-                detailRouter.present(.detailA("aaaa"), style: .withAnimation)
+                router.present(.content.a, .detail.a("aaa"), style: .modal)
             }
             Button("b_b") {
-                contentRouter.present(.contentB, style: .withAnimation)
-                detailRouter.present(.detailB("bbbb"), style: .withAnimation)
+                router.present(.content.b, .detail.b("bbb"), style: .withAnimation)
             }
             Button("c_c") {
-                contentRouter.present(.contentC, style: .withAnimation)
-                detailRouter.present(.detailC("cccc"), style: .withAnimation)
+                router.present(.content.c, .detail.c("ccc"), style: .withAnimation)
             }
 
             Button("Content1") {
-                rootRouter.present(.test1)
+                router.present(.root.test1)
             }
             ScrollView {
                 MarkdownView(markdown: """
@@ -64,10 +53,10 @@ struct SidebarA: View {
 - [B b](example://contentB/detailB/bbb)
 - [C c](example://contentC/detailC/ccc)
 
+- [content1](example://test1)
 
-
-- [modal](example://detailA/aaa?style=modal)
-
+- [detail modal](example://detailA/aaa?style=modal)
+- [content modal](example://contentA?style=modal)
 """)
             }
             Spacer()

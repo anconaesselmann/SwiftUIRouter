@@ -7,11 +7,16 @@ import SwiftUIRouter
 struct ContentView: View {
 
     @EnvironmentObject
-    var router: RootRouter
+    var router: AppRouter
 
     var body: some View {
-        Button("content2") {
-            router.present(.test2)
+        VStack {
+            Button("content2") {
+                router.present(.root.test2)
+            }
+            Button("with detail") {
+                router.present(.root.test2, .content.c, .detail.c("ccc"))
+            }
         }
     }
 }
