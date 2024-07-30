@@ -79,10 +79,7 @@ struct DetailC: View {
                 HStack {
                     TextField("go to", text: $userInput)
                     Button("go") {
-                        guard let detail = DetailRoute(rawValue: userInput) else {
-                            return
-                        }
-                        router.present(URL(detail))
+                        router.present(URL(appUrl: userInput))
                     }
                 }.frame(maxWidth: 400)
             }

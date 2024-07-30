@@ -3,7 +3,6 @@
 
 import Foundation
 import Combine
-
 import SwiftUI
 
 public class Router<R>: ObservableObject

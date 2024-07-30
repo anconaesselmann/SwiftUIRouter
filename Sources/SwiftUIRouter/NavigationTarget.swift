@@ -3,11 +3,14 @@
 
 import SwiftUI
 
-public struct NavigationTarget<R, Content>: View
+public struct NavigationTarget<R, Content>: NavigationTargetType
     where R: RouteType, Content: View
 {
     @EnvironmentObject
     private var router: Router<R>
+
+    @EnvironmentObject
+    private var appRouter: AppRouter
 
     private var content: (R) -> Content
 

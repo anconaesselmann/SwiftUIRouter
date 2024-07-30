@@ -57,6 +57,8 @@ struct SidebarA: View {
 
 - [detail modal](example://detailA/aaa?style=modal)
 - [content modal](example://contentA?style=modal)
+
+- [test1 modal](example://test1/contentA/detailC/100?style=modal)
 """)
             }
             Spacer()

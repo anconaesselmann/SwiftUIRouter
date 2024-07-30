@@ -27,23 +27,24 @@ struct SwiftUIRouterExampleApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationTarget(RootRoute.test1, content: RootFactory.init)
-                .onDeeplink(
-                    with: AppLink.example.rawValue,
-                    use: rootRouter, sidebarRouter, contentRouter, detailRouter
-                )
-                .presentModal(for: detailRouter) { route in
-                    Modal {
-                        DetailFactory(route: route)
-                            .use(router: detailRouter)
+            DeeplinkView(urlType: AppLink.example.rawValue) {
+                NavigationTarget(RootRoute.test1, content: RootFactory.init)
+                    .presentModal(for: detailRouter) { route in
+                        Modal {
+                            DetailFactory(route: route)
+                        }
                     }
-                }
-                .presentModal(for: contentRouter) { route in
-                    Modal {
-                        ContentFactory(route: route)
-                            .use(router: contentRouter)
+                    .presentModal(for: contentRouter) { route in
+                        Modal {
+                            ContentFactory(route: route)
+                        }
                     }
-                }
+                    .presentModal(for: rootRouter) { route in
+                        Modal {
+                            RootFactory(route: route)
+                        }
+                    }
+            }.use(routers: rootRouter, sidebarRouter, contentRouter, detailRouter)
         }
     }
 }
