@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		97218D312C56EDAC00417205 /* SwiftUIRouterExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97218D302C56EDAC00417205 /* SwiftUIRouterExampleApp.swift */; };
-		97218D332C56EDAC00417205 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97218D322C56EDAC00417205 /* ContentView.swift */; };
+		97218D312C56EDAC00417205 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97218D302C56EDAC00417205 /* App.swift */; };
+		97218D332C56EDAC00417205 /* StackRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97218D322C56EDAC00417205 /* StackRootView.swift */; };
 		97218D352C56EDAE00417205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97218D342C56EDAE00417205 /* Assets.xcassets */; };
 		97218D392C56EDAE00417205 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97218D382C56EDAE00417205 /* Preview Assets.xcassets */; };
 		97218D412C583E5100417205 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97218D402C583E5100417205 /* Route.swift */; };
@@ -16,16 +16,22 @@
 		97218D472C58429800417205 /* ViewFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97218D462C58429800417205 /* ViewFactories.swift */; };
 		97218D492C5842B500417205 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97218D482C5842B500417205 /* Modal.swift */; };
 		97218D4B2C5842CF00417205 /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97218D4A2C5842CF00417205 /* Sheet.swift */; };
-		97FB95582C58E44500826EFC /* ContentViewSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB95572C58E44500826EFC /* ContentViewSplitView.swift */; };
+		97FB95582C58E44500826EFC /* SplitRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB95572C58E44500826EFC /* SplitRootView.swift */; };
 		97FB955B2C58F26700826EFC /* DetailA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB955A2C58F26700826EFC /* DetailA.swift */; };
+		97FB955D2C59A91C00826EFC /* TabRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB955C2C59A91C00826EFC /* TabRootView.swift */; };
+		97FB95612C59AA8C00826EFC /* DetailB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB95602C59AA8C00826EFC /* DetailB.swift */; };
+		97FB95632C59AA9D00826EFC /* DetailC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB95622C59AA9D00826EFC /* DetailC.swift */; };
+		97FB95662C59AAC100826EFC /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB95652C59AAC100826EFC /* Double+Extensions.swift */; };
+		97FB95682C59AAD300826EFC /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB95672C59AAD300826EFC /* Color+Extensions.swift */; };
+		97FB956C2C59AB5600826EFC /* URL+Rote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB956B2C59AB5600826EFC /* URL+Rote.swift */; };
 		9DFB16E0039E430FA0E262AE /* SwiftUIRouter in Frameworks */ = {isa = PBXBuildFile; productRef = 9DFB16E0A0E262AE9BFCD44E /* SwiftUIRouter */; };
 		9DFB16E04F6D4C58AF1FC7B1 /* SwiftUIMarkdownView in Frameworks */ = {isa = PBXBuildFile; productRef = 9DFB16E0AF1FC7B1AAE83915 /* SwiftUIMarkdownView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		97218D2D2C56EDAC00417205 /* SwiftUIRouterExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIRouterExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		97218D302C56EDAC00417205 /* SwiftUIRouterExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIRouterExampleApp.swift; sourceTree = "<group>"; };
-		97218D322C56EDAC00417205 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		97218D302C56EDAC00417205 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		97218D322C56EDAC00417205 /* StackRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackRootView.swift; sourceTree = "<group>"; };
 		97218D342C56EDAE00417205 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97218D362C56EDAE00417205 /* SwiftUIRouterExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftUIRouterExample.entitlements; sourceTree = "<group>"; };
 		97218D382C56EDAE00417205 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -35,8 +41,14 @@
 		97218D462C58429800417205 /* ViewFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactories.swift; sourceTree = "<group>"; };
 		97218D482C5842B500417205 /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		97218D4A2C5842CF00417205 /* Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
-		97FB95572C58E44500826EFC /* ContentViewSplitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewSplitView.swift; sourceTree = "<group>"; };
+		97FB95572C58E44500826EFC /* SplitRootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitRootView.swift; sourceTree = "<group>"; };
 		97FB955A2C58F26700826EFC /* DetailA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailA.swift; sourceTree = "<group>"; };
+		97FB955C2C59A91C00826EFC /* TabRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabRootView.swift; sourceTree = "<group>"; };
+		97FB95602C59AA8C00826EFC /* DetailB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailB.swift; sourceTree = "<group>"; };
+		97FB95622C59AA9D00826EFC /* DetailC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailC.swift; sourceTree = "<group>"; };
+		97FB95652C59AAC100826EFC /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		97FB95672C59AAD300826EFC /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		97FB956B2C59AB5600826EFC /* URL+Rote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Rote.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,15 +84,10 @@
 			isa = PBXGroup;
 			children = (
 				97218D3F2C56F15600417205 /* Info.plist */,
-				97218D302C56EDAC00417205 /* SwiftUIRouterExampleApp.swift */,
-				97218D322C56EDAC00417205 /* ContentView.swift */,
-				97FB95572C58E44500826EFC /* ContentViewSplitView.swift */,
-				97218D442C58426D00417205 /* SidebarA.swift */,
+				97218D302C56EDAC00417205 /* App.swift */,
 				97218D402C583E5100417205 /* Route.swift */,
-				97218D462C58429800417205 /* ViewFactories.swift */,
-				97FB95592C58F25C00826EFC /* DetailViews */,
-				97218D482C5842B500417205 /* Modal.swift */,
-				97218D4A2C5842CF00417205 /* Sheet.swift */,
+				97FB95692C59AAFD00826EFC /* Views */,
+				97FB95642C59AAB500826EFC /* Extensions */,
 				97218D342C56EDAE00417205 /* Assets.xcassets */,
 				97218D362C56EDAE00417205 /* SwiftUIRouterExample.entitlements */,
 				97218D372C56EDAE00417205 /* Preview Content */,
@@ -100,8 +107,59 @@
 			isa = PBXGroup;
 			children = (
 				97FB955A2C58F26700826EFC /* DetailA.swift */,
+				97FB95602C59AA8C00826EFC /* DetailB.swift */,
+				97FB95622C59AA9D00826EFC /* DetailC.swift */,
 			);
 			path = DetailViews;
+			sourceTree = "<group>";
+		};
+		97FB955E2C59A92300826EFC /* RootViews */ = {
+			isa = PBXGroup;
+			children = (
+				97218D322C56EDAC00417205 /* StackRootView.swift */,
+				97FB95572C58E44500826EFC /* SplitRootView.swift */,
+				97FB955C2C59A91C00826EFC /* TabRootView.swift */,
+			);
+			path = RootViews;
+			sourceTree = "<group>";
+		};
+		97FB955F2C59AA7400826EFC /* SidebarViews */ = {
+			isa = PBXGroup;
+			children = (
+				97218D442C58426D00417205 /* SidebarA.swift */,
+			);
+			path = SidebarViews;
+			sourceTree = "<group>";
+		};
+		97FB95642C59AAB500826EFC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				97FB956B2C59AB5600826EFC /* URL+Rote.swift */,
+				97FB95652C59AAC100826EFC /* Double+Extensions.swift */,
+				97FB95672C59AAD300826EFC /* Color+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		97FB95692C59AAFD00826EFC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				97FB956A2C59AB1700826EFC /* Containers */,
+				97218D462C58429800417205 /* ViewFactories.swift */,
+				97FB955E2C59A92300826EFC /* RootViews */,
+				97FB955F2C59AA7400826EFC /* SidebarViews */,
+				97FB95592C58F25C00826EFC /* DetailViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		97FB956A2C59AB1700826EFC /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				97218D482C5842B500417205 /* Modal.swift */,
+				97218D4A2C5842CF00417205 /* Sheet.swift */,
+			);
+			path = Containers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,14 +241,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97FB95612C59AA8C00826EFC /* DetailB.swift in Sources */,
+				97FB95662C59AAC100826EFC /* Double+Extensions.swift in Sources */,
 				97218D412C583E5100417205 /* Route.swift in Sources */,
+				97FB95632C59AA9D00826EFC /* DetailC.swift in Sources */,
 				97218D472C58429800417205 /* ViewFactories.swift in Sources */,
-				97FB95582C58E44500826EFC /* ContentViewSplitView.swift in Sources */,
+				97FB95582C58E44500826EFC /* SplitRootView.swift in Sources */,
 				97218D452C58426D00417205 /* SidebarA.swift in Sources */,
 				97218D492C5842B500417205 /* Modal.swift in Sources */,
 				97FB955B2C58F26700826EFC /* DetailA.swift in Sources */,
-				97218D332C56EDAC00417205 /* ContentView.swift in Sources */,
-				97218D312C56EDAC00417205 /* SwiftUIRouterExampleApp.swift in Sources */,
+				97FB955D2C59A91C00826EFC /* TabRootView.swift in Sources */,
+				97218D332C56EDAC00417205 /* StackRootView.swift in Sources */,
+				97FB95682C59AAD300826EFC /* Color+Extensions.swift in Sources */,
+				97218D312C56EDAC00417205 /* App.swift in Sources */,
+				97FB956C2C59AB5600826EFC /* URL+Rote.swift in Sources */,
 				97218D4B2C5842CF00417205 /* Sheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

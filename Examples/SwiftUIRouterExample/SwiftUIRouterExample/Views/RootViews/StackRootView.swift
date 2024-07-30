@@ -4,14 +4,10 @@
 import SwiftUI
 import SwiftUIRouter
 
-
-struct ContentView: View {
+struct StackRootView: View {
 
     @EnvironmentObject
     var router: AppRouter
-
-    @EnvironmentObject
-    var detailRouter: DetailRouter
 
     @State private var path = [DetailRoute]()
 

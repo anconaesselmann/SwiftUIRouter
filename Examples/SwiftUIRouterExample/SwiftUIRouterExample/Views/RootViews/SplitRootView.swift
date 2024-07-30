@@ -4,7 +4,7 @@
 import SwiftUI
 import SwiftUIRouter
 
-struct ContentViewSplitView: View {
+struct SplitRootView: View {
     var body: some View {
         NavigationSplitView {
             NavigationTarget(SidebarRoute.sidebarA, content: SidebarFactory.init)
@@ -15,3 +15,4 @@ struct ContentViewSplitView: View {
         }
     }
 }
+

@@ -34,7 +34,7 @@ public class Router<R>: ObservableObject
             var event: NavigationEvent<R>? = self._event.value
             let newEvent: NavigationEvent<R>?
             if let newRoute = $0 {
-                newEvent = NavigationEvent(route: newRoute, style: .modal)
+                newEvent = NavigationEvent(route: newRoute, style: .modal, activeTab: event?.activeTab)
             } else {
                 newEvent = nil
             }
@@ -45,19 +45,38 @@ public class Router<R>: ObservableObject
         }
     }
 
+    public var tab: Binding<Int> {
+        Binding(
+            get: { [weak self] in
+                self?.selectedTab ?? 0
+            },
+            set: { [weak self] in
+                self?.tab($0)
+            }
+        )
+    }
+
+    public private(set) var selectedTab: Int = 0
+
+    public func tab(_ selectedTab: Int) {
+        self.selectedTab = selectedTab
+        self.objectWillChange.send()
+    }
+
     public init() {}
 
-    public func present(_ route: R, style: NavigationStyle = .none) {
-        let event = NavigationEvent(route: route, style: style)
+    public func present(_ route: R, style: NavigationStyle = .none, activeTab: Int?) {
+        let event = NavigationEvent(route: route, style: style, activeTab: activeTab)
+        self.selectedTab = activeTab ?? 0
         self._event.send(event)
         self.objectWillChange.send()
     }
 
-    public func present(anyRoute: any RouteType, style: NavigationStyle = .none) -> Bool {
+    public func present(anyRoute: any RouteType, style: NavigationStyle = .none, activeTab: Int?) -> Bool {
         guard let route = anyRoute as? R else {
             return false
         }
-        self.present(route, style: style)
+        self.present(route, style: style, activeTab: activeTab)
         return true
     }
 

@@ -9,10 +9,12 @@ struct RootFactory: View {
 
     var body: some View {
         switch route {
-        case .test1:
-            ContentView()
-        case .test2:
-            ContentViewSplitView()
+        case .stack:
+            StackRootView()
+        case .split:
+            SplitRootView()
+        case .tab:
+            TabRootView()
         }
     }
 }

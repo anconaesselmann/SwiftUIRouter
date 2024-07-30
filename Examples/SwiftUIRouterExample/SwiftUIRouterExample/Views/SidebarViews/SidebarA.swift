@@ -32,7 +32,7 @@ struct SidebarA: View {
             }
 
             Button("Content1") {
-                router.present(.root.test1, .detail.a("aaa"))
+                router.present(.root.stack, .detail.a("aaa"))
             }
             ScrollView {
                 MarkdownView(markdown: """
@@ -53,12 +53,15 @@ struct SidebarA: View {
 - [B b](example://contentB/detailB/bbb)
 - [C c](example://contentC/detailC/ccc)
 
-- [content1](example://test1)
+- [content1](example://stack)
 
 - [detail modal](example://detailA/aaa?style=modal)
 - [content modal](example://contentA?style=modal)
 
-- [test1 modal](example://test1/contentA/detailC/100?style=modal)
+- [stack modal](example://stack/contentA/detailC/100?style=modal)
+
+- [tabs](example://tab/contentA/detailC/100)
+- [tabs modal](example://tab/contentA/detailC/100?style=modal)
 """)
             }
             Spacer()
