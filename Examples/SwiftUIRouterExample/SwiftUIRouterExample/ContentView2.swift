@@ -7,11 +7,11 @@ import SwiftUIRouter
 struct ContentView2: View {
     var body: some View {
         NavigationSplitView {
-            NavigationTargetView(SidebarRoute.sidebarA, content: SidebarFactory.init)
+            NavigationTarget(SidebarRoute.sidebarA, content: SidebarFactory.init)
         } content: {
-            NavigationTargetView(ContentRoute.contentA, content: ContentFactory.init)
+            NavigationTarget(ContentRoute.contentA, content: ContentFactory.init)
         } detail: {
-            NavigationTargetView(DetailRoute.detailA("asdf"), content: DetailFactory.init)
+            NavigationTarget(DetailRoute.detailA("asdf"), content: DetailFactory.init)
         }
     }
 }

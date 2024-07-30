@@ -27,7 +27,7 @@ struct SwiftUIRouterExampleApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationTargetView(RootRoute.test1, content: RootFactory.init)
+            NavigationTarget(RootRoute.test1, content: RootFactory.init)
                 .onDeeplink(
                     with: AppLink.example.rawValue,
                     use: rootRouter, sidebarRouter, contentRouter, detailRouter

@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-public struct NavigationTargetView<R, Content>: View
+public struct NavigationTarget<R, Content>: View
     where R: RouteType, Content: View
 {
     @EnvironmentObject
