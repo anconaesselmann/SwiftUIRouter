@@ -3,10 +3,6 @@
 
 import Foundation
 
-public enum NavigationStyle: String {
-    case none, modal, withAnimation
-}
-
 public struct NavigationEvent<R>
     where R: RouteType
 {

@@ -28,20 +28,10 @@ struct SwiftUIRouterExampleApp: App {
                 .environmentObject(sidebarRouter)
                 .environmentObject(contentRouter)
                 .environmentObject(detailRouter)
-
-                .handlesExternalEvents(
-                    preferring: ["example"],
-                    allowing: ["example"]
+                .onDeeplink(
+                    with: "example",
+                    use: rootRouter, sidebarRouter, contentRouter, detailRouter
                 )
-                .onOpenURL(perform: { url in
-                    [
-                        rootRouter.asAnyRouter(),
-                        sidebarRouter.asAnyRouter(),
-                        contentRouter.asAnyRouter(),
-                        detailRouter.asAnyRouter()
-                    ]
-                    .route(url)
-                })
                 .sheet(
                     item: Binding(
                         get: { detailRouter.modal },

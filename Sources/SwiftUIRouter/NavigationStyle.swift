@@ -3,20 +3,9 @@
 
 import Foundation
 
-public extension Bool {
-    init(withAnimation url: URL) {
-        let components = URLComponents(string: url.absoluteString)
-        guard let queryItem = components?.queryItems?.first(where: { $0.name == "with_animation" } ) else {
-            self = false
-            return
-        }
-        switch queryItem.value?.lowercased() {
-        case "1", "true": self = true
-        default: self = false
-        }
-    }
+public enum NavigationStyle: String {
+    case none, modal, withAnimation
 }
-
 
 public extension NavigationStyle {
     init(_ url: URL) {
