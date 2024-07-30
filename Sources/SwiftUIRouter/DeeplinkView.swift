@@ -22,15 +22,6 @@ public struct DeeplinkView<Content>: View
         self.content = content
     }
 
-    public init(
-        urlType: String,
-        @ViewBuilder
-        content: @escaping () -> Content
-    ) {
-        self.urlTypes = [urlType]
-        self.content = content
-    }
-
     public var body: some View {
         content()
             .handlesExternalEvents(
@@ -40,5 +31,37 @@ public struct DeeplinkView<Content>: View
             .onOpenURL(perform: { url in
                 appRouter.present(url)
             })
+    }
+}
+
+public extension DeeplinkView {
+    init(
+        urlType: String,
+        @ViewBuilder
+        content: @escaping () -> Content
+    ) {
+        self = .init(urlTypes: [urlType], content: content)
+    }
+
+    init<Link>(
+        _ urlType: Link.Type,
+        @ViewBuilder
+        content: @escaping () -> Content
+    ) 
+        where 
+            Link: RawRepresentable, Link.RawValue == String,
+            Link: CaseIterable
+    {
+        self = .init(urlTypes: Set(urlType.allCases.map { $0.rawValue }), content: content)
+    }
+
+    init<Link>(
+        _ urlType: Link,
+        @ViewBuilder
+        content: @escaping () -> Content
+    )
+        where Link: RawRepresentable, Link.RawValue == String
+    {
+        self = .init(urlTypes: [urlType.rawValue], content: content)
     }
 }
