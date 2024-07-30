@@ -28,17 +28,11 @@ struct SwiftUIRouterExampleApp: App {
                     with: "example",
                     use: rootRouter, sidebarRouter, contentRouter, detailRouter
                 )
-                .sheet(
-                    item: Binding(
-                        get: { detailRouter.modal },
-                        set: { detailRouter.modal = $0 }
-                    ),
-                    content: { route in
-                        Modal {
-                            DetailFactory(route: route)
-                        }
+                .presentModal(for: detailRouter) { route in
+                    Modal {
+                        DetailFactory(route: route)
                     }
-                )
+                }
         }
     }
 }
