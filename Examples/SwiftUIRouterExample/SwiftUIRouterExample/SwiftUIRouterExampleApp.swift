@@ -24,10 +24,6 @@ struct SwiftUIRouterExampleApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationTargetView(RootRoute.test1, content: RootFactory.init)
-                .environmentObject(rootRouter)
-                .environmentObject(sidebarRouter)
-                .environmentObject(contentRouter)
-                .environmentObject(detailRouter)
                 .onDeeplink(
                     with: "example",
                     use: rootRouter, sidebarRouter, contentRouter, detailRouter
