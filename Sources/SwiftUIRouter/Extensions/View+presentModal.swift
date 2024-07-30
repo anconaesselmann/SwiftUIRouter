@@ -11,10 +11,7 @@ public extension View {
         where R: RouteType, Content: View
     {
         self.sheet(
-            item: Binding(
-                get: { router.modal },
-                set: { router.modal = $0 }
-            ),
+            item: router.modal,
             content: content
         )
     }

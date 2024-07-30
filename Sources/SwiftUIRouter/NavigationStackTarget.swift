@@ -31,7 +31,15 @@ public struct NavigationStackTarget<R, Content>: View
                 }
         }
         .onReceive(router.event) { event in
-            self.path.append(event.route)
+            guard path.last != event.route else {
+                return
+            }
+            if let index = path.firstIndex(where: { $0 == event.route }) {
+                // Todo: possible to not...
+                path = Array(path[0...index])
+            } else {
+                path.append(event.route)
+            }
         }
     }
 }

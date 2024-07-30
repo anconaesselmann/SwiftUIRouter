@@ -54,10 +54,10 @@ struct DetailFactory: View {
             switch route {
             case .detailA(let value):
                 DetailA(value: value)
-            case .detailB:
-                Text("detailB")
-            case .detailC:
-                Text("detailC")
+            case .detailB(let value):
+                DetailB(value: value)
+            case .detailC(let value):
+                DetailC(value: value)
             }
         }
     }

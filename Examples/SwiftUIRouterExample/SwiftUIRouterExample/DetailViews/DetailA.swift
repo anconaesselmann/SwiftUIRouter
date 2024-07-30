@@ -29,5 +29,82 @@ struct DetailA: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.random)
+        .navigationTitle("A: \(value)")
+    }
+}
+
+struct DetailB: View {
+
+    @EnvironmentObject
+    var router: AppRouter
+
+    let value: String
+
+    var body: some View {
+        VStack {
+            Text("detailB, \(value)")
+            VStack {
+                let newValue = (Int(value) ?? 0) + 1
+                Button("detail c \(newValue)") {
+                    router.present(.detail.c("\(newValue)"))
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.random)
+        .navigationTitle("B: \(value)")
+    }
+}
+
+struct DetailC: View {
+
+    @EnvironmentObject
+    var router: AppRouter
+
+    let value: String
+
+    @State
+    var userInput: String = ""
+
+    var body: some View {
+        VStack {
+            Text("detailC, \(value)")
+            VStack {
+                let newValue = (Int(value) ?? 0) + 1
+                Button("detail c \(newValue)") {
+                    router.present(.detail.c("\(newValue)"))
+                }
+                HStack {
+                    TextField("go to", text: $userInput)
+                    Button("go") {
+                        guard let detail = DetailRoute(rawValue: userInput) else {
+                            return
+                        }
+                        router.present(URL(detail))
+                    }
+                }.frame(maxWidth: 400)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.random)
+        .navigationTitle("C: \(value)")
+    }
+}
+
+extension Double {
+    static var randomUnitInterval: Double {
+        .random(in: 0...1)
+    }
+}
+
+extension Color {
+    static var random: Color {
+        Color(
+            red: Double.randomUnitInterval,
+            green: Double.randomUnitInterval,
+            blue: Double.randomUnitInterval
+        ).opacity(0.3)
     }
 }

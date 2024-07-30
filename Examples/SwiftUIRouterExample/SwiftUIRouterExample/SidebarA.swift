@@ -32,7 +32,7 @@ struct SidebarA: View {
             }
 
             Button("Content1") {
-                router.present(.root.test1)
+                router.present(.root.test1, .detail.a("aaa"))
             }
             ScrollView {
                 MarkdownView(markdown: """

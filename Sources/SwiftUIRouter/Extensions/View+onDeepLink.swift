@@ -4,6 +4,13 @@
 import SwiftUI
 
 public extension View {
+    func use<T>(router: Router<T>) -> some View {
+        self.environmentObject(router)
+            .environmentObject(AppRouter { url in
+                [router.asAnyRouter()].route(url)
+            })
+    }
+
     func onDeeplink(with urlType: String, use routers: [AnyRouter]) -> some View {
         self
             .environmentObject(AppRouter { url in

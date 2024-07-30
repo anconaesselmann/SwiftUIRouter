@@ -3,7 +3,7 @@
 
 import Foundation
 
-public struct NavigationEvent<R>
+public struct NavigationEvent<R>: Equatable
     where R: RouteType
 {
     public let route: R

@@ -35,11 +35,13 @@ struct SwiftUIRouterExampleApp: App {
                 .presentModal(for: detailRouter) { route in
                     Modal {
                         DetailFactory(route: route)
+                            .use(router: detailRouter)
                     }
                 }
                 .presentModal(for: contentRouter) { route in
                     Modal {
                         ContentFactory(route: route)
+                            .use(router: contentRouter)
                     }
                 }
         }
