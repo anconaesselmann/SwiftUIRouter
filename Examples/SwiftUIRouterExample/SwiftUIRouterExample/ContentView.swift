@@ -4,19 +4,20 @@
 import SwiftUI
 import SwiftUIRouter
 
+
 struct ContentView: View {
 
     @EnvironmentObject
     var router: AppRouter
 
+    @EnvironmentObject
+    var detailRouter: DetailRouter
+
+    @State private var path = [DetailRoute]()
+
     var body: some View {
         VStack {
-            Button("content2") {
-                router.present(.root.test2)
-            }
-            Button("with detail") {
-                router.present(.root.test2, .content.c, .detail.c("ccc"))
-            }
+            NavigationStackTarget(DetailRoute.detailA("start detailA"), content: DetailFactory.init)
         }
     }
 }

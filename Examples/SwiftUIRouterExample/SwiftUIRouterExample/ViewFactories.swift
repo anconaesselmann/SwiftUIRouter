@@ -12,7 +12,7 @@ struct RootFactory: View {
         case .test1:
             ContentView()
         case .test2:
-            ContentView2()
+            ContentViewSplitView()
         }
     }
 }
@@ -52,8 +52,8 @@ struct DetailFactory: View {
     var body: some View {
         VStack {
             switch route {
-            case .detailA:
-                Text("detailA")
+            case .detailA(let value):
+                DetailA(value: value)
             case .detailB:
                 Text("detailB")
             case .detailC:

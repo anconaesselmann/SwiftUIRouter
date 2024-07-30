@@ -4,7 +4,7 @@
 import SwiftUI
 import SwiftUIRouter
 
-struct ContentView2: View {
+struct ContentViewSplitView: View {
     var body: some View {
         NavigationSplitView {
             NavigationTarget(SidebarRoute.sidebarA, content: SidebarFactory.init)

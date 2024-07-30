@@ -3,7 +3,7 @@
 
 import Foundation
 
-public protocol RouteType: RawRepresentable, Identifiable
+public protocol RouteType: RawRepresentable, Identifiable, Hashable
     where RawValue == String
 {
     var hasValue: Bool { get }

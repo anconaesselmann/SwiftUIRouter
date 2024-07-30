@@ -5,8 +5,8 @@ import PackageDescription
 let package = Package(
     name: "SwiftUIRouter",
     platforms: [
-        .macOS(.v11),
-        .iOS(.v15)
+        .macOS(.v13),
+        .iOS(.v16)
     ],
     products: [
         .library(
