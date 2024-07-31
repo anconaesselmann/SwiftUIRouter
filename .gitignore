@@ -10,6 +10,7 @@ Examples/SwiftUIRouterExample/dependencies/Sidebar/.swiftpm/xcode/package.xcwork
 Examples/SwiftUIRouterExample/dependencies/Content/.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 Examples/SwiftUIRouterExample/dependencies/Root/.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 Examples/Example_01/Example_01.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+Examples/Example_02/Example_02.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 .swiftpm/configuration/registries.json
 Examples/SwiftUIRouterExample/dependencies/Routes/.swiftpm/configuration/registries.json
 Examples/SwiftUIRouterExample/dependencies/Detail/.swiftpm/configuration/registries.json
@@ -17,5 +18,6 @@ Examples/SwiftUIRouterExample/dependencies/Sidebar/.swiftpm/configuration/regist
 Examples/SwiftUIRouterExample/dependencies/Content/.swiftpm/configuration/registries.json
 Examples/SwiftUIRouterExample/dependencies/Root/.swiftpm/configuration/registries.json
 Examples/Example_01/dependencies/Root/.swiftpm/configuration/registries.json
+Examples/Example_02/dependencies/Root/.swiftpm/configuration/registries.json
 .netrc
 .swiftclpm
