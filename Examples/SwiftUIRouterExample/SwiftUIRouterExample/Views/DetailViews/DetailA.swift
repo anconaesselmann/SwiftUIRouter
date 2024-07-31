@@ -19,7 +19,10 @@ struct DetailA: View {
                     router.present(.root.split)
                 }
                 Button("with detail") {
-                    router.present(.root.split, .content.c, .detail.c("ccc"))
+                    router.present(.root.split, .sidebar.buttons, .content.c, .detail.c("ccc"))
+                }
+                Button("with detail md") {
+                    router.present(.root.split, .sidebar.markdown, .content.c, .detail.c("ccc"))
                 }
                 Button("detail b 2") {
                     router.present(.detail.b("2"))

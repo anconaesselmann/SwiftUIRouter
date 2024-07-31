@@ -9,8 +9,10 @@ struct SidebarFactory: View {
 
     var body: some View {
         switch route {
-        case .sidebarA:
+        case .buttonSidebar:
             SidebarA()
+        case .markdownSidebar:
+            SidebarMarkdown()
         }
     }
 }

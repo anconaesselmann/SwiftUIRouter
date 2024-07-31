@@ -3,18 +3,6 @@
 
 import SwiftUIRouter
 
-enum RootRoute: String, RouteType, CaseIterable {
-    case stack, split, tab
-}
-
-enum SidebarRoute: String, RouteType, CaseIterable {
-    case sidebarA
-}
-
-enum ContentRoute: String, RouteType, CaseIterable {
-    case contentA, contentB, contentC
-}
-
 enum DetailRoute: RouteType {
     case detailA(String), detailB(String), detailC(String)
 
@@ -23,11 +11,11 @@ enum DetailRoute: RouteType {
     var rawValue: String {
         switch self {
         case .detailA(let value):
-            return "\(RouteNames.detailA.rawValue)/\(value)"
+            return "\(RouteNames.detailA)/\(value)"
         case .detailB(let value):
-            return "\(RouteNames.detailB.rawValue)/\(value)"
+            return "\(RouteNames.detailB)/\(value)"
         case .detailC(let value):
-            return "\(RouteNames.detailC.rawValue)/\(value)"
+            return "\(RouteNames.detailC)/\(value)"
         }
     }
 

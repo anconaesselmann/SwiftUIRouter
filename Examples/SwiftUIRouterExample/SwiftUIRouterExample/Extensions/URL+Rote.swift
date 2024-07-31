@@ -21,6 +21,11 @@ extension URL {
         static let tab = URL(RootRoute.tab)
     }
 
+    struct sidebar {
+        static let buttons = URL(SidebarRoute.buttonSidebar)
+        static let markdown = URL(SidebarRoute.markdownSidebar)
+    }
+
     struct content {
         static let a = URL(ContentRoute.contentA)
         static let b = URL(ContentRoute.contentB)
