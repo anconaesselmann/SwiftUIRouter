@@ -3,6 +3,6 @@
 
 import SwiftUIRouter
 
-enum SidebarRoute: String, RouteType, CaseIterable {
+public enum SidebarRoute: String, RouteType, CaseIterable {
     case buttonSidebar, markdownSidebar
 }

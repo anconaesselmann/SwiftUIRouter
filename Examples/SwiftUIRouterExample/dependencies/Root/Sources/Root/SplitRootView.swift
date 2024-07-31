@@ -3,6 +3,10 @@
 
 import SwiftUI
 import SwiftUIRouter
+import Routes
+import Detail
+import Sidebar
+import Content
 
 struct SplitRootView: View {
     var body: some View {

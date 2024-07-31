@@ -2,7 +2,8 @@
 //
 
 import SwiftUIRouter
+import Foundation
 
-enum ContentRoute: String, RouteType, CaseIterable {
+public enum ContentRoute: String, CaseIterable, RouteType {
     case contentA, contentB, contentC
 }

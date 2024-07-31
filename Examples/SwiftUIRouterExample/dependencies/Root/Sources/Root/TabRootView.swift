@@ -3,6 +3,10 @@
 
 import SwiftUI
 import SwiftUIRouter
+import Routes
+import Detail
+import Content
+import Root
 
 struct TabRootView: View {
 

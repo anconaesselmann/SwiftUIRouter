@@ -2,12 +2,17 @@
 //
 
 import SwiftUI
+import Routes
 
-struct SidebarFactory: View {
+public struct SidebarFactory: View {
 
-    let route: SidebarRoute
+    private let route: SidebarRoute
 
-    var body: some View {
+    public init(route: SidebarRoute) {
+        self.route = route
+    }
+
+    public var body: some View {
         switch route {
         case .buttonSidebar:
             SidebarA()

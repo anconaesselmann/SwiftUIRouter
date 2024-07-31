@@ -2,12 +2,17 @@
 //
 
 import SwiftUI
+import Routes
 
-struct DetailFactory: View {
+public struct DetailFactory: View {
 
-    let route: DetailRoute
+    private let route: DetailRoute
 
-    var body: some View {
+    public init(route: DetailRoute) {
+        self.route = route
+    }
+
+    public var body: some View {
         VStack {
             switch route {
             case .detailA(let value):

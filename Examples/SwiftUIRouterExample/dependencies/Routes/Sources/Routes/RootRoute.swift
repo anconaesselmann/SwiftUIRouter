@@ -3,6 +3,6 @@
 
 import SwiftUIRouter
 
-enum RootRoute: String, RouteType, CaseIterable {
+public enum RootRoute: String, RouteType, CaseIterable {
     case stack, split, tab
 }

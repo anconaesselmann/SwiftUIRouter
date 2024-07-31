@@ -2,13 +2,14 @@
 //
 
 import SwiftUIRouter
+import Foundation
 
-enum DetailRoute: RouteType {
+public enum DetailRoute: RouteType {
     case detailA(String), detailB(String), detailC(String)
 
     enum RouteNames: String { case detailA, detailB, detailC }
 
-    var rawValue: String {
+    public var rawValue: String {
         switch self {
         case .detailA(let value):
             return "\(RouteNames.detailA)/\(value)"
@@ -19,7 +20,7 @@ enum DetailRoute: RouteType {
         }
     }
 
-    init?(rawValue: String) {
+    public init?(rawValue: String) {
         guard
             let (route, value) = Self.parts(for: rawValue),
             let value = value

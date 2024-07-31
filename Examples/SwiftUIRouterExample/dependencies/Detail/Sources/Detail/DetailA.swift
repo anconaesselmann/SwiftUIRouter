@@ -3,6 +3,7 @@
 
 import SwiftUI
 import SwiftUIRouter
+import Routes
 
 struct DetailA: View {
 
@@ -34,7 +35,7 @@ struct DetailA: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.random)
+//        .background(Color.random)
         .navigationTitle("A: \(value)")
     }
 }

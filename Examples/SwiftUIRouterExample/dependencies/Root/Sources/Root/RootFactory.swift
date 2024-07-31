@@ -2,12 +2,18 @@
 //
 
 import SwiftUI
+import Routes
+import SwiftUIRouter
 
-struct RootFactory: View {
+public struct RootFactory: View {
 
-    let route: RootRoute
+    private let route: RootRoute
 
-    var body: some View {
+    public init(route: RootRoute) {
+        self.route = route
+    }
+
+    public var body: some View {
         switch route {
         case .stack:
             StackRootView()

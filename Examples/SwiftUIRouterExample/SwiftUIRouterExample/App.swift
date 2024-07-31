@@ -3,15 +3,11 @@
 
 import SwiftUI
 import SwiftUIRouter
-
-typealias RootRouter = Router<RootRoute>
-typealias SidebarRouter = Router<SidebarRoute>
-typealias ContentRouter = Router<ContentRoute>
-typealias DetailRouter = Router<DetailRoute>
-
-enum AppLink: String, CaseIterable {
-    case example
-}
+import Routes
+import Detail
+import Content
+import Sidebar
+import Root
 
 @main
 struct SwiftUIRouterExampleApp: App {

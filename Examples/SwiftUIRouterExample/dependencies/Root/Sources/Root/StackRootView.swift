@@ -3,6 +3,8 @@
 
 import SwiftUI
 import SwiftUIRouter
+import Routes
+import Detail
 
 struct StackRootView: View {
 

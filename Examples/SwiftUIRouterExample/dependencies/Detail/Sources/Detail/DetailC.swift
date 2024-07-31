@@ -3,6 +3,7 @@
 
 import SwiftUI
 import SwiftUIRouter
+import Routes
 
 struct DetailC: View {
 
@@ -10,7 +11,6 @@ struct DetailC: View {
     var router: AppRouter
 
     let value: String
-
 
     var body: some View {
         VStack {
@@ -24,7 +24,7 @@ struct DetailC: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.random)
+//        .background(Color.random)
         .navigationTitle("C: \(value)")
     }
 }

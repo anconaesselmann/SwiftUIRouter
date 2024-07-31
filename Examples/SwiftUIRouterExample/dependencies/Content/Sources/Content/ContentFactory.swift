@@ -2,12 +2,17 @@
 //
 
 import SwiftUI
+import Routes
 
-struct ContentFactory: View {
+public struct ContentFactory: View {
 
-    let route: ContentRoute
+    private let route: ContentRoute
 
-    var body: some View {
+    public init(route: ContentRoute) {
+        self.route = route
+    }
+
+    public var body: some View {
         switch route {
         case .contentA:
             ContentA()
