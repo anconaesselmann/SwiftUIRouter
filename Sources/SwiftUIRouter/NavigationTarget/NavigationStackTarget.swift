@@ -37,7 +37,9 @@ internal struct NavigationStackTarget<R, Content>: NavigationTargetType
             guard path.last != event.route else {
                 return
             }
-            if let index = path.firstIndex(where: { $0 == event.route }) {
+            if event.route == startingRoute {
+                path = []
+            } else if let index = path.firstIndex(where: { $0 == event.route }) {
                 // Todo: possible to not...
                 path = Array(path[0...index])
             } else {
