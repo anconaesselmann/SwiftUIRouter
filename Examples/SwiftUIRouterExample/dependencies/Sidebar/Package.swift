@@ -15,12 +15,13 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../../../../../SwiftUIRouter"),
-        .package(path: "../Routes")
+        .package(path: "../Routes"),
+        .package(url: "https://github.com/anconaesselmann/SwiftUIMarkdownView", from: "0.1.3")
     ],
     targets: [
         .target(
             name: "Sidebar",
-            dependencies: ["SwiftUIRouter", "Routes"]
+            dependencies: ["SwiftUIRouter", "Routes", "SwiftUIMarkdownView"]
         )
     ]
 )
