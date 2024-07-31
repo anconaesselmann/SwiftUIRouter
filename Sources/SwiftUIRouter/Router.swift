@@ -65,7 +65,7 @@ public class Router<R>: ObservableObject
 
     public init() {}
 
-    public func present(_ route: R, style: NavigationStyle = .none, activeTab: Int?) {
+    public func present(_ route: R, style: NavigationStyle = .none, activeTab: Int? = nil) {
         let event = NavigationEvent(route: route, style: style, activeTab: activeTab)
         self.selectedTab = activeTab ?? 0
         self._event.send(event)

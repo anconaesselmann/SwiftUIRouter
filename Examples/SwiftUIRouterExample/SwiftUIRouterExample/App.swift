@@ -28,7 +28,7 @@ struct SwiftUIRouterExampleApp: App {
     var body: some Scene {
         WindowGroup {
             DeeplinkView(AppLink.self) {
-                NavigationTarget(RootRoute.tab, content: RootFactory.init)
+                NavigationTarget(root: RootRoute.tab, content: RootFactory.init)
                     .modal(for: detailRouter) { route in
                         Modal {
                             DetailFactory(route: route)

@@ -13,7 +13,7 @@ struct StackRootView: View {
 
     var body: some View {
         VStack {
-            NavigationStackTarget(DetailRoute.detailA("start detailA"), content: DetailFactory.init)
+            NavigationTarget(.navStack, root: DetailRoute.detailA("start detailA"), content: DetailFactory.init)
         }
     }
 }

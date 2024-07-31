@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-public struct NavigationStackTarget<R, Content>: NavigationTargetType
+internal struct NavigationStackTarget<R, Content>: NavigationTargetType
     where R: RouteType, Content: View
 {
     @EnvironmentObject
@@ -14,7 +14,7 @@ public struct NavigationStackTarget<R, Content>: NavigationTargetType
 
     private var content: (R) -> Content
 
-    public init(_ startingRoute: R, @ViewBuilder content: @escaping (R) -> Content) {
+    internal init(_ startingRoute: R, @ViewBuilder content: @escaping (R) -> Content) {
         self.startingRoute = startingRoute
         self.path = []
         self.content = content
@@ -26,7 +26,7 @@ public struct NavigationStackTarget<R, Content>: NavigationTargetType
     @State
     private var startingRoute: R
 
-    public var body: some View {
+    internal var body: some View {
         NavigationStack(path: $path) {
             content(startingRoute)
                 .navigationDestination(for: R.self) { route in
