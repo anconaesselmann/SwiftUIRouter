@@ -27,6 +27,7 @@ struct DetailA: View {
                 Button("modal detail c 3") {
                     router.present(.detail.c("3"), style: .modal)
                 }
+                Spacer()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

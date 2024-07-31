@@ -44,6 +44,9 @@ struct SwiftUIRouterExampleApp: App {
                             RootFactory(route: route)
                         }
                     }
+                    .toolbar {
+                        AddressBar().frame(width: 400)
+                    }
             }.use(routers: rootRouter, sidebarRouter, contentRouter, detailRouter)
         }
     }

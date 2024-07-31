@@ -1,7 +1,6 @@
 //  Created by Axel Ancona Esselmann on 7/29/24.
 //
 
-import Foundation
 import SwiftUIRouter
 
 enum RootRoute: String, RouteType, CaseIterable {

@@ -19,6 +19,7 @@ struct DetailB: View {
                 Button("detail c \(newValue)") {
                     router.present(.detail.c("\(newValue)"))
                 }
+                Spacer()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -11,8 +11,6 @@ struct DetailC: View {
 
     let value: String
 
-    @State
-    var userInput: String = ""
 
     var body: some View {
         VStack {
@@ -22,12 +20,7 @@ struct DetailC: View {
                 Button("detail c \(newValue)") {
                     router.present(.detail.c("\(newValue)"))
                 }
-                HStack {
-                    TextField("go to", text: $userInput)
-                    Button("go") {
-                        router.present(URL(appUrl: userInput))
-                    }
-                }.frame(maxWidth: 400)
+                Spacer()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
