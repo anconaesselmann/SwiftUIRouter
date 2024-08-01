@@ -4,7 +4,7 @@
 import SwiftUI
 import SwiftUIRouter
 
-struct SecondView: View {
+struct DetailView: View {
 
     @EnvironmentObject
     var router: Router<Route>
@@ -13,7 +13,7 @@ struct SecondView: View {
 
     var body: some View {
         VStack {
-            Text("Screen with id: \(id)")
+            Text("Detail with id: \(id)")
             HStack {
                 Button("back") {
                     let previousId = id - 1

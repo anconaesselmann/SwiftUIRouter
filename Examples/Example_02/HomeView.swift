@@ -4,14 +4,14 @@
 import SwiftUI
 import SwiftUIRouter
 
-struct AppLauchView: View {
+struct HomeView: View {
 
     @EnvironmentObject
     var router: Router<Route>
 
     var body: some View {
         VStack {
-            Text("App launched")
+            Text("Home")
             Button("next") {
                 router.present(.detail(1))
             }

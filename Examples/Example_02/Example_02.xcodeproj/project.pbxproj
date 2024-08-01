@@ -8,16 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		9777E30B2C5AC2F2004CF75B /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9777E30A2C5AC2F2004CF75B /* ExampleApp.swift */; };
-		9777E31D2C5AC932004CF75B /* AppLauchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9777E31C2C5AC932004CF75B /* AppLauchView.swift */; };
-		9777E31F2C5AC951004CF75B /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9777E31E2C5AC951004CF75B /* SecondView.swift */; };
+		9777E31D2C5AC932004CF75B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9777E31C2C5AC932004CF75B /* HomeView.swift */; };
+		9777E31F2C5AC951004CF75B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9777E31E2C5AC951004CF75B /* DetailView.swift */; };
+		9777E3212C5B59FC004CF75B /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9777E3202C5B59FC004CF75B /* Route.swift */; };
 		9DFB16E0039E430FA0E262AE /* SwiftUIRouter in Frameworks */ = {isa = PBXBuildFile; productRef = 9DFB16E0A0E262AE9BFCD44E /* SwiftUIRouter */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9777E3072C5AC2F2004CF75B /* Example_02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example_02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9777E30A2C5AC2F2004CF75B /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
-		9777E31C2C5AC932004CF75B /* AppLauchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauchView.swift; sourceTree = "<group>"; };
-		9777E31E2C5AC951004CF75B /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		9777E31C2C5AC932004CF75B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9777E31E2C5AC951004CF75B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		9777E3202C5B59FC004CF75B /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,8 +38,8 @@
 			isa = PBXGroup;
 			children = (
 				9777E30A2C5AC2F2004CF75B /* ExampleApp.swift */,
-				9777E31C2C5AC932004CF75B /* AppLauchView.swift */,
-				9777E31E2C5AC951004CF75B /* SecondView.swift */,
+				9777E3202C5B59FC004CF75B /* Route.swift */,
+				9777E3222C5B5A36004CF75B /* Views */,
 				9777E3082C5AC2F2004CF75B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,6 +50,15 @@
 				9777E3072C5AC2F2004CF75B /* Example_02.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9777E3222C5B5A36004CF75B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9777E31C2C5AC932004CF75B /* HomeView.swift */,
+				9777E31E2C5AC951004CF75B /* DetailView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,9 +135,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9777E31F2C5AC951004CF75B /* SecondView.swift in Sources */,
+				9777E31F2C5AC951004CF75B /* DetailView.swift in Sources */,
+				9777E3212C5B59FC004CF75B /* Route.swift in Sources */,
 				9777E30B2C5AC2F2004CF75B /* ExampleApp.swift in Sources */,
-				9777E31D2C5AC932004CF75B /* AppLauchView.swift in Sources */,
+				9777E31D2C5AC932004CF75B /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
