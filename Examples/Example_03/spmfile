@@ -1,4 +1,5 @@
 {
+  "info": "This file is used to manage swift packages through the command line. For more info visit https://github.com/anconaesselmann/CLSPM",
   "dependencies" : [
     {
       "id" : "09711F0F-B759-45D1-920F-91F8849F8325",
