@@ -67,3 +67,56 @@ Routes can have IDs. [Example 02](https://github.com/anconaesselmann/SwiftUIRout
         }
     }
 
+### Example 03:
+
+Example 3 is a small "real world example". We manage a logged in state and demonstrate how how state might be managed inside an app that uses SwiftUIRouter.
+
+We can nest `NavigationTargets`s. Example 3 uses the default NavigationTarget for maintaining a logged in, an onboarding and a logged out state. To demonstrate how SwiftUIRouter can facilitate a decoupled routing layer each of the main app states are their own SPM packages and the main app imports them as dependencies.
+
+The onboarding flow makes use of `NavigationTarget`'s ability to use a `NavigationStack` internally:
+
+    NavigationTarget(
+        .navStack,
+        root: OnboardingRoute.userDetail,
+        content: OnboardingFactory.init
+    )
+    .use(router: onboardingRouter, appRouter: appRouter)
+
+
+The logged-in state demonstrates how `NavigationTarget` can manage tabs inside a `TabView`:
+
+    TabView {
+        NavigationTarget(root: Route.home, content: LoggedInFactory.init)
+            .tag(0)
+        NavigationTarget(root: Route.detail(1), content: LoggedInFactory.init)
+            .tag(1)
+    }
+    .toolbar {
+        Button("Log out", action: vm.logOutPressed)
+    }.use(router: router)
+
+
+Routing within each of the app components is typesafe. The internal `Router` uses the route specified in each package. Each package allows navigatin to outside routes with `AppRouter`. We specify a URL to facilitate external routing.
+
+	extension URL {
+	    static let loggedIn = URL(string: "app://loggedIn")
+	    static let loggedOut = URL(string: "app://loggedOut")
+	}
+
+	let router: AppRouter
+
+	Button("Log out") {
+		router.present(.loggedOut)
+	}
+
+Here we trade type-safety for decoupling.
+
+
+Example 04 demonstrates how SwiftUIRouter's support for URL routing can be utilized to facilitate deeplinking
+
+
+
+Note: If you are tempted to pass more than an ID with your routes have a look at `LoadableView`. In my experience passing more than IDs causes coupling in my apps that makes view re-use really difficult. `LoadableView` facilitates views that can inflate themselves from a local or remote state with just an ID.
+
+
+
