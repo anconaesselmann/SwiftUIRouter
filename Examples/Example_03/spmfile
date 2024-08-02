@@ -1,0 +1,54 @@
+{
+  "dependencies" : [
+    {
+      "id" : "09711F0F-B759-45D1-920F-91F8849F8325",
+      "local_path" : "dependencies/Auth",
+      "name" : "Auth",
+      "use_local" : true
+    },
+    {
+      "id" : "00C80FE8-2C93-48B1-9FCB-E798E19FFFBA",
+      "local_path" : "dependencies/LoggedIn",
+      "name" : "LoggedIn",
+      "use_local" : true
+    },
+    {
+      "id" : "8DC07262-438D-40E3-8E59-7FA5923CB1B6",
+      "local_path" : "dependencies/LoggedOut",
+      "name" : "LoggedOut",
+      "use_local" : true
+    },
+    {
+      "id" : "11D0E09C-ADB9-4527-B847-BE73EC7FC363",
+      "local_path" : "dependencies/Onboarding",
+      "name" : "Onboarding",
+      "use_local" : true
+    },
+    {
+      "id" : "8BA14249-FD84-46D3-98B6-E0360C328FE2",
+      "local_path" : "dependencies/SharedUI",
+      "name" : "SharedUI",
+      "use_local" : true
+    },
+    {
+      "id" : "7511C78B-039E-430F-A0E2-62AE9BFCD44E",
+      "local_path" : "../../",
+      "name" : "SwiftUIRouter",
+      "use_local" : true
+    }
+  ],
+  "targets" : [
+    {
+      "dependencies" : [
+        "Auth",
+        "LoggedIn",
+        "LoggedOut",
+        "Onboarding",
+        "SharedUI",
+        "SwiftUIRouter"
+      ],
+      "id" : "9DFB16E0-CBB9-4FC6-9CE5-A1A8BD756004",
+      "name" : "Example_03"
+    }
+  ]
+}
