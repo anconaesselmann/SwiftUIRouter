@@ -7,15 +7,15 @@ import Auth
 import SharedUI
 
 @MainActor
-class LoggedInViewModel: ObservableObject {
+public class LoggedInViewModel: ObservableObject {
 
     private let auth: AuthManager
-    private let router: Router<RootRoute>
+    private let router: AppRouter
 
     @Published
     private(set) var state: ViewState = .idle
 
-    init(auth: AuthManager, router: Router<RootRoute>) {
+    public init(auth: AuthManager, router: AppRouter) {
         self.auth = auth
         self.router = router
     }

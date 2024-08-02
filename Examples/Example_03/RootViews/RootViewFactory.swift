@@ -5,6 +5,8 @@ import SwiftUI
 import SwiftUIRouter
 import Auth
 import LoggedOut
+import LoggedIn
+import Onboarding
 
 struct RootViewFactory: View {
 
@@ -35,10 +37,10 @@ struct RootViewFactory: View {
             let vm = LoggedOutViewModel(auth: auth, router: appRouter)
             LoggedOutView(vm: vm)
         case .onboarding:
-            OnboardingView(router: appRouter)
+            OnboardingView()
                 .environmentObject(auth)
         case .loggedIn:
-            let vm = LoggedInViewModel(auth: auth, router: rootRouter)
+            let vm = LoggedInViewModel(auth: auth, router: appRouter)
             LoggedInView(vm: vm)
                 .environmentObject(auth)
         }

@@ -5,21 +5,20 @@ import SwiftUI
 import SwiftUIRouter
 import Onboarding
 
-struct OnboardingView: View {
+public struct OnboardingView: View {
 
     @StateObject
-    var onboardingRouter = Router<OnboardingRoute>()
+    private var onboardingRouter = Router<OnboardingRoute>()
 
     @StateObject
-    var info = OnboardingInfo()
+    private var info = OnboardingInfo()
 
-    let appRouter: AppRouter
+    @EnvironmentObject
+    private var appRouter: AppRouter
 
-    public init(router: AppRouter) {
-        self.appRouter = router
-    }
+    public init() { }
 
-    var body: some View {
+    public var body: some View {
         NavigationTarget(
             .navStack,
             root: OnboardingRoute.userDetail,

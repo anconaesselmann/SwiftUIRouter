@@ -4,17 +4,20 @@
 import SwiftUI
 import SwiftUIRouter
 import SharedUI
-import LoggedIn
 
-struct LoggedInView: View {
-
-    @StateObject
-    var vm: LoggedInViewModel
+public struct LoggedInView: View {
 
     @StateObject
-    var router = Router<Route>()
+    private var vm: LoggedInViewModel
 
-    var body: some View {
+    @StateObject
+    private var router = Router<Route>()
+
+    public init(vm: LoggedInViewModel) {
+        _vm = StateObject(wrappedValue: vm)
+    }
+
+    public var body: some View {
         LoadingView(vm.state) {
             TabView {
                 NavigationTarget(root: Route.home, content: LoggedInFactory.init)

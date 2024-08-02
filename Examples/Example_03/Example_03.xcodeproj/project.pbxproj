@@ -9,10 +9,7 @@
 /* Begin PBXBuildFile section */
 		9777E30B2C5AC2F2004CF75B /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9777E30A2C5AC2F2004CF75B /* ExampleApp.swift */; };
 		97CE6C762C5D404B00B1243B /* RootRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE6C752C5D404B00B1243B /* RootRoute.swift */; };
-		97CE6C7E2C5D406800B1243B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE6C7C2C5D406800B1243B /* OnboardingView.swift */; };
 		97CE6C7F2C5D406800B1243B /* RootViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE6C7D2C5D406800B1243B /* RootViewFactory.swift */; };
-		97CE6C832C5D407900B1243B /* LoggedInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE6C812C5D407900B1243B /* LoggedInViewModel.swift */; };
-		97CE6C842C5D407900B1243B /* LoggedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE6C822C5D407900B1243B /* LoggedInView.swift */; };
 		9DFB16E0039E430FA0E262AE /* SwiftUIRouter in Frameworks */ = {isa = PBXBuildFile; productRef = 9DFB16E0A0E262AE9BFCD44E /* SwiftUIRouter */; };
 		9DFB16E02C9348B19FCBE798 /* LoggedIn in Frameworks */ = {isa = PBXBuildFile; productRef = 9DFB16E09FCBE798E19FFFBA /* LoggedIn */; };
 		9DFB16E0438D40E38E597FA5 /* LoggedOut in Frameworks */ = {isa = PBXBuildFile; productRef = 9DFB16E08E597FA5923CB1B6 /* LoggedOut */; };
@@ -25,10 +22,7 @@
 		9777E3072C5AC2F2004CF75B /* Example_03.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example_03.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9777E30A2C5AC2F2004CF75B /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		97CE6C752C5D404B00B1243B /* RootRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootRoute.swift; sourceTree = "<group>"; };
-		97CE6C7C2C5D406800B1243B /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = RootViews/OnboardingView.swift; sourceTree = "<group>"; };
 		97CE6C7D2C5D406800B1243B /* RootViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewFactory.swift; path = RootViews/RootViewFactory.swift; sourceTree = "<group>"; };
-		97CE6C812C5D407900B1243B /* LoggedInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoggedInViewModel.swift; path = RootViews/LoggedInView/LoggedInViewModel.swift; sourceTree = "<group>"; };
-		97CE6C822C5D407900B1243B /* LoggedInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoggedInView.swift; path = RootViews/LoggedInView/LoggedInView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +47,7 @@
 			children = (
 				9777E30A2C5AC2F2004CF75B /* ExampleApp.swift */,
 				97CE6C752C5D404B00B1243B /* RootRoute.swift */,
-				97CE6C7B2C5D406000B1243B /* RootViews */,
+				97CE6C7D2C5D406800B1243B /* RootViewFactory.swift */,
 				9777E3082C5AC2F2004CF75B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,25 +58,6 @@
 				9777E3072C5AC2F2004CF75B /* Example_03.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		97CE6C7B2C5D406000B1243B /* RootViews */ = {
-			isa = PBXGroup;
-			children = (
-				97CE6C802C5D406F00B1243B /* LoggedInView */,
-				97CE6C7C2C5D406800B1243B /* OnboardingView.swift */,
-				97CE6C7D2C5D406800B1243B /* RootViewFactory.swift */,
-			);
-			name = RootViews;
-			sourceTree = "<group>";
-		};
-		97CE6C802C5D406F00B1243B /* LoggedInView */ = {
-			isa = PBXGroup;
-			children = (
-				97CE6C822C5D407900B1243B /* LoggedInView.swift */,
-				97CE6C812C5D407900B1243B /* LoggedInViewModel.swift */,
-			);
-			name = LoggedInView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,11 +150,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97CE6C7E2C5D406800B1243B /* OnboardingView.swift in Sources */,
-				97CE6C842C5D407900B1243B /* LoggedInView.swift in Sources */,
 				9777E30B2C5AC2F2004CF75B /* ExampleApp.swift in Sources */,
 				97CE6C762C5D404B00B1243B /* RootRoute.swift in Sources */,
-				97CE6C832C5D407900B1243B /* LoggedInViewModel.swift in Sources */,
 				97CE6C7F2C5D406800B1243B /* RootViewFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

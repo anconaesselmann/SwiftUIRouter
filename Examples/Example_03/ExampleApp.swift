@@ -12,8 +12,11 @@ struct ExampleApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationTarget(root: RootRoute.loggedOut, content: RootViewFactory.init)
-                .use(router: rootRouter)
+            NavigationTarget(
+                root: RootRoute.loggedOut,
+                content: RootViewFactory.init
+            )
+            .use(router: rootRouter)
         }
     }
 }
