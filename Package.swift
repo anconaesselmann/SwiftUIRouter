@@ -11,13 +11,10 @@ let package = Package(
     products: [
         .library(
             name: "SwiftUIRouter",
-            targets: ["SwiftUIRouter"]),
+            targets: ["SwiftUIRouter"]
+        ),
     ],
     targets: [
-        .target(
-            name: "SwiftUIRouter"),
-        .testTarget(
-            name: "SwiftUIRouterTests",
-            dependencies: ["SwiftUIRouter"]),
+        .target(name: "SwiftUIRouter")
     ]
 )
