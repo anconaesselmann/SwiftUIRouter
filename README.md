@@ -9,63 +9,68 @@ A decoupled routing layer for SwiftUI
 
 We set up a `NavigationTarget` to respond to route changes:
 
-    enum Route: String, CaseIterable, RouteType {
-        case home, detail
-    }
+```swift
+enum Route: String, CaseIterable, RouteType {
+    case home, detail
+}
 
-    NavigationTarget(root: Route.home) { route in
-        switch route {
-        case .home:
-            HomeView()
-        case .detail:
-            DetailView()
-        }
-    }.use(router: router)
+NavigationTarget(root: Route.home) { route in
+    switch route {
+    case .home:
+        HomeView()
+    case .detail:
+        DetailView()
+    }
+}.use(router: router)
+```
 
 Anywhere in our app we can now trigger our `NavigationTarget` to swap out it's root view:
 
-    struct SomeView: View {
+```swift
+struct SomeView: View {
 
-        @EnvironmentObject
-        var router: Router<Route>
+    @EnvironmentObject
+    var router: Router<Route>
 
-        var body: some View {
-            Button("home", systemImage: "house.circle.fill") {
-                router.present(.home)
-            }
+    var body: some View {
+        Button("home", systemImage: "house.circle.fill") {
+            router.present(.home)
         }
     }
-
+}
+```
 
 ### [Example 02](https://github.com/anconaesselmann/SwiftUIRouter/tree/main/Examples/Example_02):
 
 Routes can have IDs. [Example 02](https://github.com/anconaesselmann/SwiftUIRouter/tree/main/Examples/Example_02) revisits the first example but the `detail` route has an ID:
 
-    enum Route: RouteType {
-        case home, detail(Int)
+```swift
+enum Route: RouteType {
+    case home, detail(Int)
 
-       enum RouteName: String {
-            case home, detail
-        }
+   enum RouteName: String {
+        case home, detail
+    }
 
-        var rawValue: String {
-            switch self {
-            case .home: return RouteName.home.rawValue
-            case .detail(let id): return "\(RouteName.detail.rawValue)/\(id)"
-            }
-        }
-
-        init?(rawValue: String) {
-            guard let (route, id) = Self.parts(for: rawValue) else { return nil }
-            switch (RouteName(rawValue: route), id) {
-            case (.home, nil): self = .home
-            case (.detail, let id):
-                guard let id = id, let id = Int(id) else { return nil }
-                self = .detail(id)
-            default: return nil
-            }
+    var rawValue: String {
+        switch self {
+        case .home: return RouteName.home.rawValue
+        case .detail(let id): return "\(RouteName.detail.rawValue)/\(id)"
         }
     }
+
+    init?(rawValue: String) {
+        guard let (route, id) = Self.parts(for: rawValue) else { return nil }
+        switch (RouteName(rawValue: route), id) {
+        case (.home, nil): self = .home
+        case (.detail, let id):
+            guard let id = id, let id = Int(id) else { return nil }
+            self = .detail(id)
+        default: return nil
+        }
+    }
+}
+```
 
 ### [Example 03](https://github.com/anconaesselmann/SwiftUIRouter/tree/main/Examples/Example_03):
 
@@ -75,66 +80,72 @@ Example 3 is a small "real world example". We manage a logged in state and demon
 
 The `onboarding` flow makes use of `NavigationTarget`'s ability to use a `NavigationStack` internally:
 
-    NavigationTarget(
-        .navStack,
-        root: OnboardingRoute.userDetail,
-        content: OnboardingFactory.init
-    )
-    .use(router: onboardingRouter)
-
+```swift
+NavigationTarget(
+    .navStack,
+    root: OnboardingRoute.userDetail,
+    content: OnboardingFactory.init
+)
+.use(router: onboardingRouter)
+```
 
 The `loggedIn` state demonstrates how `NavigationTarget` can manage tabs inside a `TabView`:
 
-    TabView {
-        NavigationTarget(root: Route.home, content: LoggedInFactory.init)
-            .tag(0)
-        NavigationTarget(root: Route.detail(1), content: LoggedInFactory.init)
-            .tag(1)
-    }
-    .toolbar {
-        Button("Log out", action: vm.logOutPressed)
-    }.use(router: router)
-
+```swift
+TabView {
+    NavigationTarget(root: Route.home, content: LoggedInFactory.init)
+        .tag(0)
+    NavigationTarget(root: Route.detail(1), content: LoggedInFactory.init)
+        .tag(1)
+}
+.toolbar {
+    Button("Log out", action: vm.logOutPressed)
+}.use(router: router)
+```
 
 Routing within each of the app components is typesafe. The internal `Router` uses the route specified in each package:
 
+```swift
+@EnvironmentObject
+var router: Router<OnboardingRoute>
 
-    @EnvironmentObject
-    var router: Router<OnboardingRoute>
-
-    var body: some View {
-        Button("Log out") {
-            router.present(.createPassword)
-        }
+var body: some View {
+    Button("Log out") {
+        router.present(.createPassword)
     }
+}
+```
 
 Routes not defined in a package can be reached via a type-erased `AppRouter` which uses `URL`s instead of typed `RouteType`s:
 
-    extension URL {
-        static let loggedIn = URL(string: "app://loggedIn")
-        static let loggedOut = URL(string: "app://loggedOut")
-    }
+```swift
+extension URL {
+    static let loggedIn = URL(string: "app://loggedIn")
+    static let loggedOut = URL(string: "app://loggedOut")
+}
 
-    @EnvironmentObject
-    var router: AppRouter
+@EnvironmentObject
+var router: AppRouter
 
-    var body: some View {
-        Button("Log out") {
-            router.present(.loggedOut)
-        }
+var body: some View {
+    Button("Log out") {
+        router.present(.loggedOut)
     }
+}
+```
 
 Here we trade type-safety for decoupling.
 
 Note: AppRouter gets injected into the view environment when we use `.use(routers:)`. If a module calls `.use(routers:)` on a nested  `NavigationTarget` and we want to be able to route outside of the package we have to pass in the existing app router instance:
 
-
+```swift
 	// A local router manages routing for the scope of this package
     @StateObject
     var onboardingRouter = Router<OnboardingRoute>()
 
-    // If we want to navigate outside of this package's scope we have to do so with `AppRouter`
-    // which will have been created when we called `.use(router:)` on our parent `NavigationTarget`
+    // If we want to navigate outside of this package's scope we have to do so 
+    // with `AppRouter`, which will have been created when we called `.use(routers:)` 
+    // on our parent `NavigationTarget`
     @EnvironmentObject
     var appRouter: AppRouter
 
@@ -149,7 +160,7 @@ Note: AppRouter gets injected into the view environment when we use `.use(router
         // from our parent scope we pass it in as well
         .use(router: onboardingRouter, appRouter: appRouter)
     }
-
+```
 
 ### [Example 04](https://github.com/anconaesselmann/SwiftUIRouter/tree/main/Examples/SwiftUIRouterExample) 
 (Apologies, Example 04 needs a bit of cleanup work) demonstrates how `SwiftUIRouter`'s support for `URL`-routing can be utilized to facilitate deeplinking to any screen in the app that has a route.
