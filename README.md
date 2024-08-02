@@ -71,9 +71,9 @@ Routes can have IDs. [Example 02](https://github.com/anconaesselmann/SwiftUIRout
 
 Example 3 is a small "real world example". We manage a logged in state and demonstrate how how state might be managed inside an app that uses SwiftUIRouter.
 
-We can nest `NavigationTargets`s. Example 3 uses the default NavigationTarget for maintaining a logged in, an onboarding and a logged out state. To demonstrate how SwiftUIRouter can facilitate a decoupled routing layer each of the main app states are their own SPM packages and the main app imports them as dependencies.
+`NavigationTargets`s can be nested. Example 3 uses the default `NavigationTargets` for maintaining a `loggedIn`, an `onboarding` and a `loggedOut` state. To demonstrate how `SwiftUIRouter` can facilitate a decoupled routing layer each of the main app-states are their own [SPM](https://www.swift.org/documentation/package-manager/) packages that get imported by the the main app as dependencies.
 
-The onboarding flow makes use of `NavigationTarget`'s ability to use a `NavigationStack` internally:
+The `onboarding` flow makes use of `NavigationTarget`'s ability to use a `NavigationStack` internally:
 
     NavigationTarget(
         .navStack,
@@ -83,7 +83,7 @@ The onboarding flow makes use of `NavigationTarget`'s ability to use a `Navigati
     .use(router: onboardingRouter, appRouter: appRouter)
 
 
-The logged-in state demonstrates how `NavigationTarget` can manage tabs inside a `TabView`:
+The `loggedIn` state demonstrates how `NavigationTarget` can manage tabs inside a `TabView`:
 
     TabView {
         NavigationTarget(root: Route.home, content: LoggedInFactory.init)
@@ -96,18 +96,33 @@ The logged-in state demonstrates how `NavigationTarget` can manage tabs inside a
     }.use(router: router)
 
 
-Routing within each of the app components is typesafe. The internal `Router` uses the route specified in each package. Each package allows navigatin to outside routes with `AppRouter`. We specify a URL to facilitate external routing.
+Routing within each of the app components is typesafe. The internal `Router` uses the route specified in each package:
 
-	extension URL {
-	    static let loggedIn = URL(string: "app://loggedIn")
-	    static let loggedOut = URL(string: "app://loggedOut")
-	}
 
-	let router: AppRouter
+    @EnvironmentObject
+    var router: Router<OnboardingRoute>
 
-	Button("Log out") {
-		router.present(.loggedOut)
-	}
+    var body: some View {
+        Button("Log out") {
+            router.present(.createPassword)
+        }
+    }
+
+Routes not defined in a package can be reached via a type-erased `AppRouter` which uses `URL`s instead of typed `RouteType`s:
+
+    extension URL {
+        static let loggedIn = URL(string: "app://loggedIn")
+        static let loggedOut = URL(string: "app://loggedOut")
+    }
+
+    @EnvironmentObject
+    var router: AppRouter
+
+    var body: some View {
+        Button("Log out") {
+            router.present(.loggedOut)
+        }
+    }
 
 Here we trade type-safety for decoupling.
 

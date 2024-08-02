@@ -7,9 +7,9 @@ import SwiftUIRouter
 @MainActor
 class UserInfoViewModel: ObservableObject {
 
-    private var router: Router<OnboardingRoute>
+    private let router: Router<OnboardingRoute>
 
-    private var info: OnboardingInfo
+    private let info: OnboardingInfo
 
     var email: String {
         get { info.email ?? "" }
