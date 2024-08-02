@@ -67,11 +67,11 @@ Routes can have IDs. [Example 02](https://github.com/anconaesselmann/SwiftUIRout
         }
     }
 
-### Example 03:
+### [Example 03](https://github.com/anconaesselmann/SwiftUIRouter/tree/main/Examples/Example_03):
 
 Example 3 is a small "real world example". We manage a logged in state and demonstrate how state might be managed inside an app that uses `SwiftUIRouter`.
 
-`NavigationTargets`s can be nested. Example 3 uses the default `NavigationTargets` for maintaining a `loggedIn`, an `onboarding` and a `loggedOut` state. To demonstrate how `SwiftUIRouter` can facilitate a decoupled routing layer each of the main app-states are their own [SPM](https://www.swift.org/documentation/package-manager/) packages that get imported by the the main app as dependencies.
+`NavigationTargets`s can be nested. [Example 3](https://github.com/anconaesselmann/SwiftUIRouter/tree/main/Examples/Example_03) uses the default `NavigationTargets` for maintaining a `loggedIn`, an `onboarding` and a `loggedOut` state. To demonstrate how `SwiftUIRouter` can facilitate a decoupled routing layer each of the main app-states are their own [SPM](https://www.swift.org/documentation/package-manager/) packages that get imported by the the main app as dependencies.
 
 The `onboarding` flow makes use of `NavigationTarget`'s ability to use a `NavigationStack` internally:
 
@@ -132,6 +132,3 @@ Example 04 demonstrates how SwiftUIRouter's support for URL routing can be utili
 
 
 Note: If you are tempted to pass more than an ID with your routes have a look at `LoadableView`. In my experience passing more than IDs causes coupling in my apps that makes view re-use really difficult. `LoadableView` facilitates views that can inflate themselves from a local or remote state with just an ID.
-
-
-
