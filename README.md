@@ -69,7 +69,7 @@ Routes can have IDs. [Example 02](https://github.com/anconaesselmann/SwiftUIRout
 
 ### Example 03:
 
-Example 3 is a small "real world example". We manage a logged in state and demonstrate how how state might be managed inside an app that uses SwiftUIRouter.
+Example 3 is a small "real world example". We manage a logged in state and demonstrate how state might be managed inside an app that uses `SwiftUIRouter`.
 
 `NavigationTargets`s can be nested. Example 3 uses the default `NavigationTargets` for maintaining a `loggedIn`, an `onboarding` and a `loggedOut` state. To demonstrate how `SwiftUIRouter` can facilitate a decoupled routing layer each of the main app-states are their own [SPM](https://www.swift.org/documentation/package-manager/) packages that get imported by the the main app as dependencies.
 
