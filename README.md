@@ -80,7 +80,7 @@ The `onboarding` flow makes use of `NavigationTarget`'s ability to use a `Naviga
         root: OnboardingRoute.userDetail,
         content: OnboardingFactory.init
     )
-    .use(router: onboardingRouter, appRouter: appRouter)
+    .use(router: onboardingRouter)
 
 
 The `loggedIn` state demonstrates how `NavigationTarget` can manage tabs inside a `TabView`:
@@ -126,9 +126,35 @@ Routes not defined in a package can be reached via a type-erased `AppRouter` whi
 
 Here we trade type-safety for decoupling.
 
-
-Example 04 demonstrates how SwiftUIRouter's support for URL routing can be utilized to facilitate deeplinking
-
+Note: AppRouter gets injected into the view environment when we use `.use(routers:)`. If a module calls `.use(routers:)` on a nested  `NavigationTarget` and we want to be able to route outside of the package we have to pass in the existing app router instance:
 
 
-Note: If you are tempted to pass more than an ID with your routes have a look at `LoadableView`. In my experience passing more than IDs causes coupling in my apps that makes view re-use really difficult. `LoadableView` facilitates views that can inflate themselves from a local or remote state with just an ID.
+	// A local router manages routing for the scope of this package
+    @StateObject
+    var onboardingRouter = Router<OnboardingRoute>()
+
+    // If we want to navigate outside of this package's scope we have to do so with `AppRouter`
+    // which will have been created when we called `.use(router:)` on our parent `NavigationTarget`
+    @EnvironmentObject
+    var appRouter: AppRouter
+
+
+    var body: some View {
+        NavigationTarget(
+            .navStack,
+            root: OnboardingRoute.userDetail,
+            content: OnboardingFactory.init
+        )
+        // We inject the local router and to not mask the `AppRouter` 
+        // from our parent scope we pass it in as well
+        .use(router: onboardingRouter, appRouter: appRouter)
+    }
+
+
+### [Example 04](https://github.com/anconaesselmann/SwiftUIRouter/tree/main/Examples/SwiftUIRouterExample) 
+(Apologies, Example 04 needs a bit of cleanup work) demonstrates how `SwiftUIRouter`'s support for `URL`-routing can be utilized to facilitate deeplinking to any screen in the app that has a route.
+
+### Final thoughts
+
+- Deciding when to create a SPM package from a part of an app is a delicate process. There is extra work involved in maintaining a package (I created a [tool](https://github.com/anconaesselmann/CLSPM) that can help) and if done in excess the result can turn into a nightmare of trying to prevent circular dependencies.
+- If you are tempted to pass more than an ID along with your routes I encourage you to have a look at [`LoadableView`](https://github.com/anconaesselmann/LoadableView). I have found that passing more than IDs causes coupling that can make it difficult to change the flow of navigation and in general makes Views less reusable in other contexts. [`LoadableView`](https://github.com/anconaesselmann/LoadableView) encourages an architecture that allows Views to inflate themselves from a local or remote state with just an ID.
