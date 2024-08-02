@@ -11,6 +11,13 @@ public class AppRouter: ObservableObject {
         self.onRoute = onRoute
     }
 
+    public init(appRouter: AppRouter? = nil, onRoute: @escaping (URL) -> Void) {
+        self.onRoute = { url in
+            appRouter?.onRoute(url)
+            onRoute(url)
+        }
+    }
+
     public func present(urls: [URL?], style: NavigationStyle? = nil) {
         var urls = urls.compactMap { url in
             if let style = style {
