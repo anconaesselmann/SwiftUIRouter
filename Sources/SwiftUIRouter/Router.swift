@@ -63,7 +63,12 @@ public class Router<R>: ObservableObject
         self.objectWillChange.send()
     }
 
-    public init() {}
+    public init(cache: RouteCacheType? = nil) {
+        if let cached = cache?.fetch(for: R.self) {
+            let event = NavigationEvent(route: cached, style: .none, activeTab: nil)
+            _event.send(event)
+        }
+    }
 
     public func present(_ route: R, style: NavigationStyle = .none, activeTab: Int? = nil) {
         let event = NavigationEvent(route: route, style: style, activeTab: activeTab)
