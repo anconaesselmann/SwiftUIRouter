@@ -13,11 +13,18 @@ internal struct NavigationStackTarget<R, Content>: NavigationTargetType
     private var appRouter: AppRouter
 
     private var content: (R) -> Content
+    private var tag: Int?
 
-    internal init(_ startingRoute: R, @ViewBuilder content: @escaping (R) -> Content) {
+    internal init(
+        _ startingRoute: R,
+        tag: Int?,
+        @ViewBuilder
+        content: @escaping (R) -> Content
+    ) {
         self.startingRoute = startingRoute
         self.path = []
         self.content = content
+        self.tag = tag
     }
 
     @State
@@ -34,6 +41,9 @@ internal struct NavigationStackTarget<R, Content>: NavigationTargetType
                 }
         }
         .onReceive(router.event) { event in
+            if let activeTag = event.activeTab, activeTag != tag {
+                return
+            }
             guard path.last != event.route else {
                 return
             }

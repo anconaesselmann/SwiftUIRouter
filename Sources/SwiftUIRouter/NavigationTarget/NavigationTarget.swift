@@ -13,6 +13,7 @@ public struct NavigationTarget<R, Content>: NavigationTargetType
     private let startingRoute: R
     private let behavior: Behavior
     private let content: (R) -> Content
+    private var tag: Int?
 
     public init(
         _ behavior: Behavior = .replace,
@@ -28,9 +29,45 @@ public struct NavigationTarget<R, Content>: NavigationTargetType
     public var body: some View {
         switch behavior {
         case .navStack:
-            NavigationStackTarget(startingRoute, content: content)
+            NavigationStackTarget(
+                startingRoute,
+                tag: tag,
+                content: content
+            )
         case .replace:
-            NavigationReplaceTarget(startingRoute, content: content)
+            NavigationReplaceTarget(
+                startingRoute,
+                tag: tag,
+                content: content
+            )
         }
+    }
+
+    public func tab(_ tagValue: Int) -> some View {
+        var copy = self
+        copy.tag = tagValue
+        return copy.tag(tagValue)
+    }
+
+    public func tab<V>(
+        _ tagValue: Int,
+        @ViewBuilder _ label: () -> V
+    ) -> some View where V : View {
+        var copy = self
+        copy.tag = tagValue
+        return copy
+            .tag(tagValue)
+            .tabItem(label)
+    }
+
+    public func tab(_ tag: any TabType) -> some View {
+        tab(tag.rawValue)
+    }
+
+    public func tab<V>(
+        _ tag: any TabType,
+        @ViewBuilder _ label: () -> V
+    ) -> some View where V : View {
+        tab(tag.rawValue, label)
     }
 }

@@ -13,10 +13,17 @@ internal struct NavigationReplaceTarget<R, Content>: NavigationTargetType
     private var appRouter: AppRouter
 
     private var content: (R) -> Content
+    private var tag: Int?
 
-    internal init(_ startingRoute: R, @ViewBuilder content: @escaping (R) -> Content) {
+    internal init(
+        _ startingRoute: R,
+        tag: Int?,
+        @ViewBuilder
+        content: @escaping (R) -> Content
+    ) {
         self.route = startingRoute
         self.content = content
+        self.tag = tag
     }
 
     @State
@@ -25,6 +32,9 @@ internal struct NavigationReplaceTarget<R, Content>: NavigationTargetType
     internal var body: some View {
         content(route)
             .onReceive(router.event) { event in
+                if let activeTag = event.activeTab, activeTag != tag {
+                    return
+                }
                 if event.withAnimation {
                     withAnimation {
                         self.route = event.route
