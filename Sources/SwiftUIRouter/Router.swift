@@ -88,4 +88,13 @@ public class Router<R>: ObservableObject
     public func asAnyRouter() -> AnyRouter {
         AnyRouter(self)
     }
+
+    internal func _updateEvent(_ route: R, style: NavigationStyle, activeTab: Int?) {
+        let event = NavigationEvent<R>(
+            route: route,
+            style: style,
+            activeTab: activeTab
+        )
+        _event.send(event)
+    }
 }

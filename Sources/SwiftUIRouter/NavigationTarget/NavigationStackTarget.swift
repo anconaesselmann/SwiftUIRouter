@@ -56,5 +56,13 @@ internal struct NavigationStackTarget<R, Content>: NavigationTargetType
                 path.append(event.route)
             }
         }
+        // Attempted fix:
+        // Back navigation on tab view would not persist across tab changes
+        .onChange(of: path) { oldValue, newValue in
+            if oldValue.count > newValue.count {
+                let route = newValue.last ?? startingRoute
+                router._updateEvent(route, style: .none, activeTab: tag)
+            }
+        }
     }
 }
