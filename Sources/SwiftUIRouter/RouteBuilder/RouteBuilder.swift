@@ -8,10 +8,11 @@ public class RouteBuilder<R> where R: RouteType {
     private enum Rule {
         case route(String, R)
         case routeWithUUID(String, (UUID) -> R)
+        case routeWithDate(String, (Date) -> R, String)
 
         var routeName: String {
             switch self {
-            case .route(let routeName, _), .routeWithUUID(let routeName, _):
+            case .route(let routeName, _), .routeWithUUID(let routeName, _), .routeWithDate(let routeName, _, _):
                 return routeName
             }
         }
@@ -32,6 +33,16 @@ public class RouteBuilder<R> where R: RouteType {
     public func add(_ routeBuilder: @escaping (UUID) -> R) -> Self {
         let routeName = String("\(routeBuilder(UUID()))".split(separator: "(")[0])
         rules.append(.routeWithUUID(routeName, routeBuilder))
+        return self
+    }
+
+    @discardableResult
+    public func add(
+        _ routeBuilder: @escaping (Date) -> R,
+        format: String = "yyyy-MM-dd"
+    ) -> Self {
+        let routeName = String("\(routeBuilder(Date()))".split(separator: "(")[0])
+        rules.append(.routeWithDate(routeName, routeBuilder, format))
         return self
     }
 
@@ -61,6 +72,16 @@ public class RouteBuilder<R> where R: RouteType {
             case .routeWithUUID(let match, let urlRouteBuilder):
                 if routeString == match, let uuid = parts.arg?.uuid {
                     return urlRouteBuilder(uuid)
+                }
+            case .routeWithDate(let match, let dayRouteBuilder, let format):
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = format
+                if
+                    routeString == match,
+                    let dateString = parts.arg,
+                    let date = dateFormatter.date(from: dateString)
+                {
+                    return dayRouteBuilder(date)
                 }
             }
         }
