@@ -7,7 +7,8 @@ public class RouteCache: RouteCacheType {
     public static let shared: RouteCacheType = RouteCache()
 
     public func cache(_ route: any RouteType) {
-        UserDefaults.standard.setValue(route.rawValue, forKey: "\(type(of: route))")
+        let rawValue = route.rawValue
+        UserDefaults.standard.setValue(rawValue, forKey: "\(type(of: route))")
     }
 
     public func fetch<Route>(for routeType: Route.Type) -> Route?

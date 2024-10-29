@@ -23,6 +23,6 @@ public extension RouteBuilding where Self: RouteType, Self.RawValue == String {
     }
 
     var rawValue: String {
-        "\(self)".replacing(")", with: "").replacing("(", with: "/")
+        Self.builder._rawValue(for: self)
     }
 }
