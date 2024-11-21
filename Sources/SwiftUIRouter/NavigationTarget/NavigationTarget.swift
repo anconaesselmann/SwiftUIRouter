@@ -66,8 +66,11 @@ public struct NavigationTarget<R, Content>: NavigationTargetType
 
     public func tab<V>(
         _ tag: any TabType,
-        @ViewBuilder _ label: () -> V
+        @ViewBuilder _ label: @escaping () -> V
     ) -> some View where V : View {
-        tab(tag.rawValue, label)
+        RouterEnvironmentAccess { environment in
+            tab(tag.rawValue, label)
+                .environment(\.routerEnvironment, environment.reduced(RouterEnvironment(tag: tag)))
+        }
     }
 }

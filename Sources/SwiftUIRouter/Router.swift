@@ -77,6 +77,14 @@ public class Router<R>: ObservableObject
         self.objectWillChange.send()
     }
 
+    public func present(_ route: R, style: NavigationStyle = .none, environment: RouterEnvironment) {
+        let activeTab = environment.tag?.rawValue
+        let event = NavigationEvent(route: route, style: style, activeTab: activeTab)
+        self.selectedTab = activeTab ?? 0
+        self._event.send(event)
+        self.objectWillChange.send()
+    }
+
     public func present(anyRoute: any RouteType, style: NavigationStyle = .none, activeTab: Int?) -> Bool {
         guard let route = anyRoute as? R else {
             return false
