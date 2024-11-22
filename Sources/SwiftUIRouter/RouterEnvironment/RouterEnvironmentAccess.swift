@@ -6,7 +6,7 @@ import SwiftUI
 internal struct RouterEnvironmentAccess<Wrapped: View>: View {
 
     @Environment(\.routerEnvironment)
-    private var environment: RouterEnvironment
+    private var routerEnvironment
 
     private let content: (RouterEnvironment) -> Wrapped
 
@@ -15,6 +15,6 @@ internal struct RouterEnvironmentAccess<Wrapped: View>: View {
     }
 
     var body: some View {
-        content(environment)
+        content(routerEnvironment)
     }
 }

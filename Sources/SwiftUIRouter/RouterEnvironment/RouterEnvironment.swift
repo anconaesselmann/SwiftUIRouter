@@ -4,10 +4,14 @@
 import Foundation
 
 public struct RouterEnvironment {
-    var tag: (any TabType)?
-    var isModal: Bool?
+    public var tag: (any TabType)?
+    public var isModal: Bool?
 
-    init(tag: (any TabType)? = nil, isModal: Bool? = nil) {
+    public static var modal: Self {
+        Self(isModal: true)
+    }
+
+    public init(tag: (any TabType)? = nil, isModal: Bool? = nil) {
         self.tag = tag
         self.isModal = isModal
     }
@@ -18,7 +22,7 @@ public struct RouterEnvironment {
             copy.tag = tab
         }
         if let isModal = nextValue.isModal {
-            copy.isModal = isModal
+            copy.isModal = true
         }
         return copy
     }

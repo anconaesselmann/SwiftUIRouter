@@ -43,7 +43,8 @@ struct SwiftUIRouterExampleApp: App {
                     .toolbar {
                         AddressBar().frame(width: 400)
                     }
-            }.use(routers: rootRouter, sidebarRouter, contentRouter, detailRouter)
+            }
+            .use(routers: rootRouter, sidebarRouter, contentRouter, detailRouter)
         }
     }
 }
